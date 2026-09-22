@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://d1w5ccem33kle"]
+
+[ext_resource type="Script" uid="uid://b50foitpeu2ne" path="res://src/Player/PlayerMovementController.gd" id="1_h00vy"]
+[ext_resource type="Script" uid="uid://dhw6e2g4e8dq1" path="res://src/Player/Player.gd" id="1_ky53y"]
+[ext_resource type="Script" uid="uid://c4lo68sy2t4nt" path="res://src/Player/PlayerStats.gd" id="2_bvqhm"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="3_ved6o"]
+[ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="5_xcisb"]
+[ext_resource type="Script" uid="uid://bgqh2yt8dn7n" path="res://src/Player/PlayerToPlayerContact.gd" id="6_socpp"]
+[ext_resource type="Script" uid="uid://c08q3xayryxgt" path="res://src/Player/CollisionState.gd" id="7_fxc31"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fxc31"]
+radius = 16.03122
+
+[sub_resource type="Resource" id="Resource_ved6o"]
+resource_local_to_scene = true
+script = ExtResource("3_ved6o")
+base_value = 600.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_socpp"]
+atlas = ExtResource("5_xcisb")
+region = Rect2(0, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxc31"]
+atlas = ExtResource("5_xcisb")
+region = Rect2(31, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puxyr"]
+atlas = ExtResource("5_xcisb")
+region = Rect2(62, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmokv"]
+atlas = ExtResource("5_xcisb")
+region = Rect2(93, 0, 31, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_do71q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_socpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxc31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puxyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmokv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_puxyr"]
+radius = 13.152946
+
+[node name="Player" type="CharacterBody2D" unique_id=1625036403]
+script = ExtResource("1_ky53y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1292280708]
+shape = SubResource("CircleShape2D_fxc31")
+
+[node name="PlayerStats" type="Node" parent="." unique_id=771416285]
+script = ExtResource("2_bvqhm")
+move_speed = SubResource("Resource_ved6o")
+metadata/_custom_type_script = "uid://c4lo68sy2t4nt"
+
+[node name="PlayerMovementController" type="Node" parent="." unique_id=551242255 node_paths=PackedStringArray("_player_node", "_player_stats", "_player_sprite")]
+script = ExtResource("1_h00vy")
+_player_node = NodePath("..")
+_player_stats = NodePath("../PlayerStats")
+_player_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1726505682]
+sprite_frames = SubResource("SpriteFrames_do71q")
+autoplay = "default"
+frame_progress = 0.8709986
+
+[node name="PlayerToPlayerContact" type="Area2D" parent="." unique_id=361628769 node_paths=PackedStringArray("player")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("6_socpp")
+player = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerToPlayerContact" unique_id=1208665195]
+shape = SubResource("CircleShape2D_puxyr")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=713256097]
+
+[node name="CollisionState" type="Node" parent="." unique_id=1590868468]
+script = ExtResource("7_fxc31")
+
+[connection signal="area_entered" from="PlayerToPlayerContact" to="PlayerToPlayerContact" method="_on_area_entered"]

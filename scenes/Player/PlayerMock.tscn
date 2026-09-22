@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://x26iis84exi1"]
+
+[ext_resource type="PackedScene" uid="uid://d1w5ccem33kle" path="res://scenes/Player/Player.tscn" id="1_2bq4q"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_5a2hp"]
+[ext_resource type="Script" uid="uid://bwf57up0k0od" path="res://src/Player/MockPlayerMovementController.gd" id="3_5a2hp"]
+
+[sub_resource type="Resource" id="Resource_2bq4q"]
+resource_local_to_scene = true
+script = ExtResource("2_5a2hp")
+base_value = 600.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[node name="PlayerMock" unique_id=1625036403 instance=ExtResource("1_2bq4q")]
+process_mode = 4
+
+[node name="PlayerStats" parent="." index="1" unique_id=771416285]
+move_speed = SubResource("Resource_2bq4q")
+
+[node name="PlayerMovementController" parent="." index="2" unique_id=551242255]
+process_mode = 1
+script = ExtResource("3_5a2hp")
+speed = 250.0
+rev_per_sec = 5.0
+
+[node name="PlayerToPlayerContact" parent="." index="4" unique_id=361628769]
+process_mode = 1

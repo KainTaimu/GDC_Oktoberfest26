@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bdis13wmborjl"]
+
+[ext_resource type="Script" uid="uid://c6srglgpix28i" path="res://src/Interactable/InteractionPrompt.gd" id="1_phrsn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogoab"]
+radius = 32.06244
+
+[node name="InteractionPrompt" type="Node2D" unique_id=1811079141]
+script = ExtResource("1_phrsn")
+progress_hint_radius = null
+
+[node name="Area2D" type="Area2D" parent="." unique_id=254332635]
+collision_mask = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=609122167]
+shape = SubResource("CircleShape2D_ogoab")
+debug_color = Color(0.37495068, 0.37495068, 0.37495068, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1425386011]
+
+[connection signal="on_interacted" from="." to="." method="_on_interacted"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_show_progress"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_hide_progress"]

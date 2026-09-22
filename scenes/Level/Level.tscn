@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ci37mmq6y6stu"]
+
+[ext_resource type="PackedScene" uid="uid://d1w5ccem33kle" path="res://scenes/Player/Player.tscn" id="1_q3201"]
+[ext_resource type="PackedScene" uid="uid://x26iis84exi1" path="res://scenes/Player/PlayerMock.tscn" id="2_yvklp"]
+[ext_resource type="PackedScene" uid="uid://b2srapdco18lr" path="res://scenes/Interactable/CookStation.tscn" id="3_wywgn"]
+
+[node name="Level" type="Node2D" unique_id=84571663]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1656160348]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=930731108]
+texture_repeat = 2
+
+[node name="Player" parent="." unique_id=825915892 instance=ExtResource("1_q3201")]
+
+[node name="PlayerMock" parent="." unique_id=1625036403 instance=ExtResource("2_yvklp")]
+position = Vector2(164, 1)
+
+[node name="CookStation" parent="." unique_id=1150379251 instance=ExtResource("3_wywgn")]
