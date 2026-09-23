@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bmhdg8346k1j7"]
+
+[ext_resource type="Script" uid="uid://c1ghywf81a0ct" path="res://src/Interactable/StationPretzel.gd" id="2_crig2"]
+[ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_souek"]
+[ext_resource type="Script" uid="uid://fm67ugt30l3j" path="res://src/Interactable/InteractBehaviorHold.gd" id="3_rjbrw"]
+
+[sub_resource type="Resource" id="Resource_souek"]
+resource_local_to_scene = true
+script = ExtResource("3_rjbrw")
+metadata/_custom_type_script = "uid://fm67ugt30l3j"
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_do71q"]
+size = Vector2(32, 32)
+
+[node name="StationPretzel" type="Node2D" unique_id=1150379251]
+script = ExtResource("2_crig2")
+
+[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_souek")]
+interact_behavior = SubResource("Resource_souek")
+radius = 24.0
+progress_radius = 64.0
+time_to_complete = 0.2
+show_time = 0.3
+interaction_cooldown = 0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=884378257]
+visible = false
+texture_repeat = 2
+texture = SubResource("PlaceholderTexture2D_do71q")
+
+[connection signal="on_interacted" from="InteractionPrompt" to="." method="_on_interaction_prompt_on_interacted"]

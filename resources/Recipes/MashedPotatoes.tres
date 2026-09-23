@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FoodRecipe" format=3 uid="uid://mtt1hb4geqgd"]
+
+[ext_resource type="Script" uid="uid://du25pxhjtre0i" path="res://src/Data/AbstractRecipeStep.gd" id="1_kkjsu"]
+[ext_resource type="Script" uid="uid://dwfpdjcmevlw" path="res://src/Data/FoodRecipe.gd" id="1_t36se"]
+[ext_resource type="Script" uid="uid://deecvcg1afn02" path="res://src/Data/RecipeStepIngredient.gd" id="2_kkjsu"]
+
+[sub_resource type="Resource" id="Resource_phrsn"]
+resource_local_to_scene = true
+script = ExtResource("2_kkjsu")
+ingredient = &"Potatoes"
+quantity = 2
+metadata/_custom_type_script = "uid://deecvcg1afn02"
+
+[resource]
+script = ExtResource("1_t36se")
+name = &"Mashed Potatoes"
+_steps = Array[ExtResource("1_kkjsu")]([SubResource("Resource_phrsn")])
+metadata/_custom_type_script = "uid://dwfpdjcmevlw"
