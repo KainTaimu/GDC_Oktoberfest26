@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gljnqypjx8lp"]
+
+[ext_resource type="Script" uid="uid://c8h24culo3ew3" path="res://src/UI/ProgressPie.gd" id="1_c8kr7"]
+
+[node name="ProgressPie" type="Node2D" unique_id=2129585531]
+script = ExtResource("1_c8kr7")

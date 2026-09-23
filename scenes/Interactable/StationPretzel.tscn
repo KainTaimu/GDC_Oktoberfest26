@@ -1,31 +1,76 @@
 [gd_scene format=3 uid="uid://bmhdg8346k1j7"]
 
 [ext_resource type="Script" uid="uid://c1ghywf81a0ct" path="res://src/Interactable/StationPretzel.gd" id="2_crig2"]
-[ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_souek"]
-[ext_resource type="Script" uid="uid://fm67ugt30l3j" path="res://src/Interactable/InteractBehaviorHold.gd" id="3_rjbrw"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_rjbrw"]
+[ext_resource type="Script" uid="uid://cdwut5ppm7anq" path="res://src/Interactable/UpgradeModule.gd" id="4_crig2"]
+[ext_resource type="Script" uid="uid://dggf2nbs5yybh" path="res://src/Data/Upgrade.gd" id="4_qw1j7"]
+[ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="6_qqac1"]
+[ext_resource type="Script" uid="uid://fm67ugt30l3j" path="res://src/Interactable/InteractBehaviorHold.gd" id="6_qw1j7"]
+[ext_resource type="Script" uid="uid://c8h24culo3ew3" path="res://src/UI/ProgressPie.gd" id="7_qw1j7"]
+[ext_resource type="Script" uid="uid://cod7jdxwjyi0e" path="res://src/UI/MoneyPopup.gd" id="8_pasfi"]
 
-[sub_resource type="Resource" id="Resource_souek"]
+[sub_resource type="Resource" id="Resource_crig2"]
 resource_local_to_scene = true
-script = ExtResource("3_rjbrw")
+script = ExtResource("2_rjbrw")
+base_value = 1.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_rjbrw"]
+resource_local_to_scene = true
+script = ExtResource("2_rjbrw")
+base_value = 5.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_pasfi"]
+resource_local_to_scene = true
+script = ExtResource("2_rjbrw")
+base_value = 0.5
+
+[sub_resource type="Resource" id="Resource_qqac1"]
+script = ExtResource("4_qw1j7")
+display_name = &"Speed"
+property_name = &"money_per_item"
+stat = SubResource("Resource_pasfi")
+metadata/_custom_type_script = "uid://dggf2nbs5yybh"
+
+[sub_resource type="Resource" id="Resource_qw1j7"]
+resource_local_to_scene = true
+script = ExtResource("6_qw1j7")
 metadata/_custom_type_script = "uid://fm67ugt30l3j"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_do71q"]
-size = Vector2(32, 32)
+size = Vector2(64, 64)
 
-[node name="StationPretzel" type="Node2D" unique_id=1150379251]
+[node name="StationPretzel" type="Node2D" unique_id=1150379251 node_paths=PackedStringArray("upgrade_module")]
 script = ExtResource("2_crig2")
+seconds_per_item = SubResource("Resource_crig2")
+money_per_item = SubResource("Resource_rjbrw")
+upgrade_module = NodePath("UpgradeModule")
 
-[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_souek")]
-interact_behavior = SubResource("Resource_souek")
+[node name="UpgradeModule" type="Node2D" parent="." unique_id=1093238359 node_paths=PackedStringArray("_target")]
+script = ExtResource("4_crig2")
+_target = NodePath("..")
+_upgrades = Array[ExtResource("4_qw1j7")]([SubResource("Resource_qqac1")])
+
+[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("6_qqac1")]
+interact_behavior = SubResource("Resource_qw1j7")
 radius = 24.0
 progress_radius = 64.0
-time_to_complete = 0.2
-show_time = 0.3
-interaction_cooldown = 0.3
+show_time = 0.5
+
+[node name="Progress" type="Node2D" parent="." unique_id=2129585531]
+position = Vector2(0, -56)
+script = ExtResource("7_qw1j7")
+radius = 8.0
+
+[node name="MoneyPopup" type="Node2D" parent="Progress" unique_id=419372734]
+position = Vector2(0, -24)
+script = ExtResource("8_pasfi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=884378257]
-visible = false
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_do71q")
 
+[connection signal="on_progress_changed" from="." to="Progress" method="set_progress"]
+[connection signal="on_last_upgrade_set" from="UpgradeModule" to="InteractionPrompt" method="disable"]
 [connection signal="on_interacted" from="InteractionPrompt" to="." method="_on_interaction_prompt_on_interacted"]

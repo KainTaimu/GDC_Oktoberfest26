@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*uid://ch52b08yhel68"
+LevelData="*uid://g2k32jjrpmg1"
 
 [display]
 
@@ -36,6 +37,10 @@ project/assembly_name="Turkey"
 
 naming/scene_name_casing=1
 naming/script_name_casing=1
+
+[gui]
+
+theme/custom_font="uid://bcmtx2bgsh8av"
 
 [input]
 

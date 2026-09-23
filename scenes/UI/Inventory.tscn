@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://jsawslw88heg"]
+
+[ext_resource type="Script" uid="uid://csjj7wavyr102" path="res://src/UI/Inventory.gd" id="1_3n8s2"]
+[ext_resource type="Theme" uid="uid://cslakycj70ecs" path="res://resources/Themes/Main.tres" id="1_oi14h"]
+[ext_resource type="FontFile" uid="uid://bcmtx2bgsh8av" path="res://assets/Fonts/Munro-2LYe.ttf" id="3_rhs5j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bldum"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_npsv5"]
+default_font = ExtResource("3_rhs5j")
+default_font_size = 24
+Label/font_sizes/font_size = 14
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_bldum")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhs5j"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi14h"]
+content_margin_left = 4.0
+content_margin_top = 32.0
+content_margin_right = 4.0
+content_margin_bottom = 32.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n8s2"]
+content_margin_left = 4.0
+content_margin_top = 32.0
+content_margin_right = 4.0
+content_margin_bottom = 32.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_detail = 5
+
+[node name="Inventory" type="CanvasLayer" unique_id=24067664 node_paths=PackedStringArray("_body", "_main_panel", "_close_button")]
+script = ExtResource("1_3n8s2")
+_body = NodePath("Body")
+_main_panel = NodePath("Body/VBoxContainer/MainPanel")
+_close_button = NodePath("Body/CenterContainer/CloseButton")
+
+[node name="Body" type="HBoxContainer" parent="." unique_id=759759165]
+custom_minimum_size = Vector2(256, 952)
+custom_maximum_size = Vector2(-1, 952)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -476.0
+offset_right = 276.0
+offset_bottom = 476.0
+grow_vertical = 2
+offset_transform_position = Vector2(-256, 0)
+theme = ExtResource("1_oi14h")
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body" unique_id=870015659]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Body/VBoxContainer" unique_id=1586220179]
+layout_mode = 2
+theme = SubResource("Theme_npsv5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Body/VBoxContainer/PanelContainer" unique_id=111651402]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
+text = "INVENTORY"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainPanel" type="PanelContainer" parent="Body/VBoxContainer" unique_id=806979282]
+custom_minimum_size = Vector2(256, 952)
+layout_mode = 2
+theme = ExtResource("1_oi14h")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhs5j")
+
+[node name="MarginContainer" type="MarginContainer" parent="Body/VBoxContainer/MainPanel" unique_id=2024587519]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/VBoxContainer/MainPanel/MarginContainer" unique_id=1793121257]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Body/VBoxContainer/MainPanel/MarginContainer/VBoxContainer" unique_id=465549900]
+layout_mode = 2
+bbcode_enabled = true
+text = "BLA"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Body" unique_id=1709595361]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="Body/CenterContainer" unique_id=1177535169]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_oi14h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oi14h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3n8s2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_oi14h")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oi14h")
+text = "<"
+
+[connection signal="pressed" from="Body/CenterContainer/CloseButton" to="." method="toggle_show"]

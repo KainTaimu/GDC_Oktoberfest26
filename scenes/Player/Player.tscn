@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://c4lo68sy2t4nt" path="res://src/Player/PlayerStats.gd" id="2_bvqhm"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="3_ved6o"]
 [ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="5_xcisb"]
+[ext_resource type="PackedScene" uid="uid://jsawslw88heg" path="res://scenes/UI/Inventory.tscn" id="6_socpp"]
+[ext_resource type="Theme" uid="uid://cvkrj645egp6" path="res://resources/Themes/TopBar.tres" id="7_fxc31"]
+[ext_resource type="Script" uid="uid://q68mep7pikto" path="res://src/UI/MoneyDisplay.gd" id="9_dqp0f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxc31"]
 radius = 16.03122
@@ -74,3 +77,34 @@ autoplay = "default"
 frame_progress = 0.8709986
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=713256097]
+
+[node name="Inventory" parent="." unique_id=24067664 instance=ExtResource("6_socpp")]
+
+[node name="TopBar" type="CanvasLayer" parent="." unique_id=719786915]
+
+[node name="PanelContainer" type="PanelContainer" parent="TopBar" unique_id=1947035639]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme = ExtResource("7_fxc31")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopBar/PanelContainer" unique_id=619821083]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="TopBar/PanelContainer/MarginContainer" unique_id=2128462064]
+layout_mode = 2
+
+[node name="MoneyDisplay" type="RichTextLabel" parent="TopBar/PanelContainer/MarginContainer/HSplitContainer" unique_id=1747882091]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "$XXX"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("9_dqp0f")
+metadata/_edit_lock_ = true

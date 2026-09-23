@@ -2,7 +2,7 @@
 class_name InteractionPrompt
 extends Node2D
 
-signal on_interacted(by: Player)
+signal on_interacted
 
 @export var interact_behavior: AbstractInteractBehavior
 @export var area: CollisionShape2D
@@ -61,7 +61,6 @@ func _process(delta: float) -> void:
 
 		if progress >= 1.0 and not was_complete:
 			on_interacted.emit()
-
 	queue_redraw()
 
 
@@ -78,6 +77,10 @@ func _input(event: InputEvent) -> void:
 		interact()
 	elif button.is_released():
 		interact_behavior.on_release()
+
+
+func disable():
+	$Area2D.process_mode = ProcessMode.PROCESS_MODE_DISABLED
 
 
 func _draw() -> void:

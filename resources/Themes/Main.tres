@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://cslakycj70ecs"]
+
+[ext_resource type="FontFile" uid="uid://bcmtx2bgsh8av" path="res://assets/Fonts/Munro-2LYe.ttf" id="1_8gv2m"]
+
+[resource]
+default_font = ExtResource("1_8gv2m")
+default_font_size = 24
+Label/font_sizes/font_size = 14
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
