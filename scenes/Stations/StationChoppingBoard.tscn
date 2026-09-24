@@ -4,23 +4,38 @@
 [ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_pn2mv"]
 [ext_resource type="Script" uid="uid://fm67ugt30l3j" path="res://src/Interactable/InteractBehaviorHold.gd" id="3_0cs76"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c3mkr"]
+size = Vector2(64, 64)
+
 [sub_resource type="Resource" id="Resource_c3mkr"]
 resource_local_to_scene = true
 script = ExtResource("3_0cs76")
 metadata/_custom_type_script = "uid://fm67ugt30l3j"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c3mkr"]
-size = Vector2(64, 64)
-
 [node name="StationChoppingBoard" type="Node2D" unique_id=1926220177]
 script = ExtResource("1_mmded")
 station_type = 1
 
-[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_pn2mv")]
-interact_behavior = SubResource("Resource_c3mkr")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=128469899]
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_c3mkr")
+
+[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_pn2mv")]
+interact_behavior = SubResource("Resource_c3mkr")
+
+[node name="Label" type="Label" parent="." unique_id=1247641211]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -60.0
+offset_right = 49.5
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Chopping board"
+horizontal_alignment = 1
 
 [connection signal="on_interacted" from="InteractionPrompt" to="." method="_on_interaction_prompt_on_interacted"]

@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://diwo8aoje52l3"]
 
 [ext_resource type="Script" uid="uid://m448v2lk4o0t" path="res://src/Ingredient/Ingredient.gd" id="1_8uerv"]
-[ext_resource type="Script" uid="uid://b21ns2kih71dq" path="res://src/Ingredient/ActionBehaviorChoppable.gd" id="2_pk02m"]
+[ext_resource type="Script" uid="uid://b21ns2kih71dq" path="res://src/Ingredient/IngredientModifierChopped.gd" id="2_pk02m"]
 
 [node name="IngredientPotatoes" type="Node" unique_id=1910664322 node_paths=PackedStringArray("actions_mapping")]
 script = ExtResource("1_8uerv")
-base_ingredient_name = &"Potatoes"
+base_ingredient_name = "Potatoes"
 actions_mapping = {
-1: NodePath("ActionBehaviorChoppable")
+1: NodePath("IngredientModifierChopped")
 }
 
-[node name="ActionBehaviorChoppable" type="Node" parent="." unique_id=2007470774 node_paths=PackedStringArray("ingredient_parent")]
+[node name="IngredientModifierChopped" type="Node" parent="." unique_id=2007470774]
 script = ExtResource("2_pk02m")
-ingredient_parent = NodePath("..")
+_modifier_name = &"Chopped"
+_modifier_type = 1

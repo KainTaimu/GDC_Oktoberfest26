@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://c6srglgpix28i" path="res://src/Interactable/InteractionPrompt.gd" id="1_phrsn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogoab"]
-radius = 20.066
+radius = 24.0
 
 [node name="InteractionPrompt" type="Node2D" unique_id=1811079141 node_paths=PackedStringArray("area")]
 script = ExtResource("1_phrsn")
 area = NodePath("Area2D/CollisionShape2D")
-radius = 20.066
 
 [node name="Area2D" type="Area2D" parent="." unique_id=254332635]
 collision_mask = 0

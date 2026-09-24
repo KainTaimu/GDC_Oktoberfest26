@@ -7,7 +7,7 @@ signal on_interacted
 @export var interact_behavior: AbstractInteractBehavior
 @export var area: CollisionShape2D
 
-@export var radius: float:
+@export var radius: float = 24:
 	get:
 		return radius
 	set(v):
@@ -39,6 +39,14 @@ var progress: float:
 @export var time_to_complete: float = 0.5
 @export var show_time: float = 1.0
 @export var interaction_cooldown: float = 1
+
+@export_category("Debug")
+@export var _show_hints: bool = false:
+	get:
+		return _show_hints
+	set(v):
+		_show_hints = v
+		queue_redraw()
 
 var _color: Color = Color.TRANSPARENT
 var _mouse_in_area: bool
@@ -90,6 +98,9 @@ func _draw() -> void:
 	draw_circle(Vector2.ZERO, progress_radius * progress, _color, true, -1, true)
 	# outer ring
 	draw_circle(Vector2.ZERO, progress_radius, _color, false, 1, true)
+	if Engine.is_editor_hint() && _show_hints:
+		# outer ring editor hint
+		draw_circle(Vector2.ZERO, progress_radius, Color.GREEN, false, 1, false)
 
 
 func interact():

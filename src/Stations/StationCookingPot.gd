@@ -8,12 +8,17 @@ func interact() -> void:
 		return
 	var ingredient := held.held_ingredient
 	if ingredient.base_ingredient_name == "Potatoes":
-		_cook_pototoes(ingredient)
+		_cook_pototoes(ingredient, held)
 
 
-func _cook_pototoes(ingredient: Ingredient):
-	if not ingredient.name_modifiers.has("Chopped"):
-		CustomLogger.log_debug("cannot cook mashed potatoes: not chopped")
+func _cook_pototoes(ingredient: Ingredient, held: PlayerHeldIngredient):
+	if not ingredient.has_modifier(AbstractIngredientModifier.Type.CHOPPED):
+		CustomLogger.log_debug("cant cook potatoes")
 		return
-	CustomLogger.log_debug("cooked")
+	
 	ingredient.queue_free()
+	var mashed_scene := load("uid://u85y0onbn35r") as PackedScene
+	var mashed := mashed_scene.instantiate()
+	held.add_child(mashed)
+	held.held_ingredient = mashed
+	CustomLogger.log_debug("cook mashed potatoes success")

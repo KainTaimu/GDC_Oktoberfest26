@@ -5,18 +5,11 @@ extends Node
 	get:
 		return _held_ingredient
 	set(v):
-		_on_held_ingredient_changed(v)
+		_on_held_ingredient_changed.call_deferred(v)
 
 @export var label: RichTextLabel
 
 var _held_ingredient: Ingredient
-
-
-func _physics_process(_delta: float) -> void:
-	if held_ingredient != null:
-		label.text = held_ingredient.ingredient_name
-	else:
-		label.text = ""
 
 
 func _on_held_ingredient_changed(new_ingredient: Ingredient):
@@ -26,6 +19,7 @@ func _on_held_ingredient_changed(new_ingredient: Ingredient):
 	_held_ingredient = new_ingredient
 	if _held_ingredient != null:
 		_held_ingredient.on_changed.connect(_set_label.bind(_held_ingredient.ingredient_name))
+		_set_label(_held_ingredient.ingredient_name)
 
 
 func _set_label(s: String):

@@ -98,7 +98,7 @@ vertical_alignment = 1
 
 [node name="IngredientPotatoes" parent="PlayerHeldIngredient" unique_id=1910664322 node_paths=PackedStringArray("actions_mapping") instance=ExtResource("6_puxyr")]
 actions_mapping = {
-1: NodePath("ActionBehaviorChoppable")
+1: NodePath("IngredientModifierChopped")
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1726505682]
