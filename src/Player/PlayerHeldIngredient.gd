@@ -28,6 +28,7 @@ func try_set_held_ingredient(ingredient: Ingredient) -> bool:
 
 	if _held_ingredient != null:
 		_held_ingredient.queue_free()
+	assert(not ingredient.is_inside_tree(), "expected ingredient to not already be in scene tree")
 	_held_ingredient = ingredient
 	add_child(_held_ingredient)
 	return true

@@ -6,14 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://b6i7oasowpmbj" path="res://scenes/Stations/StationChoppingBoard.tscn" id="5_ydaos"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_a54cq"]
 [ext_resource type="Script" uid="uid://bg0uk35hh6ra7" path="res://src/Level/LevelDataSceneProxy.gd" id="6_ooqe3"]
+[ext_resource type="PackedScene" uid="uid://b6tqqw7p7shht" path="res://scenes/Stations/StationProduceBin.tscn" id="7_a54cq"]
 
-[sub_resource type="Resource" id="Resource_3gwmf"]
+[sub_resource type="Resource" id="Resource_a54cq"]
 resource_local_to_scene = true
 script = ExtResource("6_a54cq")
-base_value = 0.5
+base_value = 1.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_2prus"]
+[sub_resource type="Resource" id="Resource_3gwmf"]
 resource_local_to_scene = true
 script = ExtResource("6_a54cq")
 base_value = 2.0
@@ -38,5 +39,8 @@ position = Vector2(687, 0)
 
 [node name="StationMashedPotatoStand" parent="." unique_id=1090745131 instance=ExtResource("5_ooqe3")]
 position = Vector2(380, 180)
-seconds_per_item = SubResource("Resource_3gwmf")
-money_per_item = SubResource("Resource_2prus")
+seconds_per_item = SubResource("Resource_a54cq")
+money_per_item = SubResource("Resource_3gwmf")
+
+[node name="StationProduceBin" parent="." unique_id=1472581706 instance=ExtResource("7_a54cq")]
+position = Vector2(179, 213)
