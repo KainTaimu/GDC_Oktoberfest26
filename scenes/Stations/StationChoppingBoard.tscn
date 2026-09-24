@@ -38,4 +38,4 @@ grow_vertical = 2
 text = "Chopping board"
 horizontal_alignment = 1
 
-[connection signal="on_interacted" from="InteractionPrompt" to="." method="_on_interaction_prompt_on_interacted"]
+[connection signal="on_interacted" from="InteractionPrompt" to="." method="interact"]

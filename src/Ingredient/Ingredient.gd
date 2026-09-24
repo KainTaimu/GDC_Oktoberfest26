@@ -25,7 +25,11 @@ var _modifiers: Array[AbstractIngredientModifier]:
 
 
 func try_station_action(station: AbstractStation):
-	var result := actions_mapping[station.station_type].try_apply_modifier()
+	var action: AbstractIngredientModifier = actions_mapping.get(station.station_type)
+	if action == null:
+		CustomLogger.log_debug("cannot do action: unknown action")
+		return
+	var result := action.try_apply_modifier()
 	CustomLogger.log_debug("action %s: %s" % [station, "ok" if result else "no"])
 
 

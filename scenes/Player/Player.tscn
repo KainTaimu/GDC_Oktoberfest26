@@ -54,8 +54,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1625036403]
+[node name="Player" type="CharacterBody2D" unique_id=1625036403 node_paths=PackedStringArray("held_ingredient")]
 script = ExtResource("1_ky53y")
+held_ingredient = NodePath("PlayerHeldIngredient")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1292280708]
 shape = SubResource("CircleShape2D_fxc31")
@@ -71,9 +72,9 @@ _player_node = NodePath("..")
 _player_stats = NodePath("../PlayerStats")
 _player_sprite = NodePath("../AnimatedSprite2D")
 
-[node name="PlayerHeldIngredient" type="Node2D" parent="." unique_id=1406850048 node_paths=PackedStringArray("held_ingredient", "label")]
+[node name="PlayerHeldIngredient" type="Node2D" parent="." unique_id=1406850048 node_paths=PackedStringArray("_held_ingredient", "label")]
 script = ExtResource("5_fxc31")
-held_ingredient = NodePath("IngredientPotatoes")
+_held_ingredient = NodePath("IngredientPotatoes")
 label = NodePath("RichTextLabel")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PlayerHeldIngredient" unique_id=850349578]
@@ -98,7 +99,8 @@ vertical_alignment = 1
 
 [node name="IngredientPotatoes" parent="PlayerHeldIngredient" unique_id=1910664322 node_paths=PackedStringArray("actions_mapping") instance=ExtResource("6_puxyr")]
 actions_mapping = {
-1: NodePath("IngredientModifierChopped")
+1: NodePath("IngredientModifierChopped"),
+2: NodePath("IngredientModifierCookMashed")
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1726505682]

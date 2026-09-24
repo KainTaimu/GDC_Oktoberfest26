@@ -6,6 +6,7 @@ var chopped: bool
 
 func try_apply_modifier() -> bool:
 	if chopped:
+		CustomLogger.log_debug("cant chop: already chopped")
 		return false
 	chopped = true
 	active = true

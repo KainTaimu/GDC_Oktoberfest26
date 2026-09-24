@@ -2,8 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://d1w5ccem33kle" path="res://scenes/Player/Player.tscn" id="1_q3201"]
 [ext_resource type="PackedScene" uid="uid://3pqmmqmplwci" path="res://scenes/Stations/StationCookingPot.tscn" id="4_xh0y6"]
+[ext_resource type="PackedScene" uid="uid://skjxtphpsw1j" path="res://scenes/Stations/StationMashedPotatoStand.tscn" id="5_ooqe3"]
 [ext_resource type="PackedScene" uid="uid://b6i7oasowpmbj" path="res://scenes/Stations/StationChoppingBoard.tscn" id="5_ydaos"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_a54cq"]
 [ext_resource type="Script" uid="uid://bg0uk35hh6ra7" path="res://src/Level/LevelDataSceneProxy.gd" id="6_ooqe3"]
+
+[sub_resource type="Resource" id="Resource_3gwmf"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 0.5
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_2prus"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 2.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [node name="Level" type="Node2D" unique_id=84571663]
 
@@ -21,3 +35,8 @@ texture_repeat = 2
 
 [node name="StationCookingPot" parent="." unique_id=916477200 instance=ExtResource("4_xh0y6")]
 position = Vector2(687, 0)
+
+[node name="StationMashedPotatoStand" parent="." unique_id=1090745131 instance=ExtResource("5_ooqe3")]
+position = Vector2(380, 180)
+seconds_per_item = SubResource("Resource_3gwmf")
+money_per_item = SubResource("Resource_2prus")

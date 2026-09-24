@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://skjxtphpsw1j"]
+
+[ext_resource type="Script" uid="uid://cjt1wanfdvmsp" path="res://src/Stations/StationMashedPotatoStand.gd" id="1_6phe4"]
+[ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_5uv32"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_ve1nr"]
+[ext_resource type="Script" uid="uid://8h5nnxqt3j1a" path="res://src/Interactable/InteractBehaviorToggle.gd" id="3_7f2ed"]
+[ext_resource type="Script" uid="uid://c8h24culo3ew3" path="res://src/UI/ProgressPie.gd" id="5_xw3ci"]
+[ext_resource type="Script" uid="uid://cod7jdxwjyi0e" path="res://src/UI/MoneyPopup.gd" id="6_h2604"]
+
+[sub_resource type="Resource" id="Resource_ve1nr"]
+resource_local_to_scene = true
+script = ExtResource("2_ve1nr")
+base_value = 0.5
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_n1ag2"]
+resource_local_to_scene = true
+script = ExtResource("2_ve1nr")
+base_value = 2.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_7f2ed"]
+resource_local_to_scene = true
+script = ExtResource("3_7f2ed")
+metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5uv32"]
+size = Vector2(64, 64)
+
+[node name="StationMashedPotatoStand" type="Node2D" unique_id=1090745131]
+script = ExtResource("1_6phe4")
+seconds_per_item = SubResource("Resource_ve1nr")
+money_per_item = SubResource("Resource_n1ag2")
+station_type = 3
+
+[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_5uv32")]
+interact_behavior = SubResource("Resource_7f2ed")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1549823168]
+texture_repeat = 2
+texture = SubResource("PlaceholderTexture2D_5uv32")
+
+[node name="Label" type="Label" parent="." unique_id=689880663]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -60.0
+offset_right = 49.5
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "M. Potato Stand"
+horizontal_alignment = 1
+
+[node name="Progress" type="Node2D" parent="." unique_id=487557772]
+position = Vector2(0, -56)
+script = ExtResource("5_xw3ci")
+radius = 8.0
+
+[node name="MoneyPopup" type="Node2D" parent="Progress" unique_id=1411075469]
+position = Vector2(0, -24)
+script = ExtResource("6_h2604")
+
+[connection signal="on_progress_changed" from="." to="Progress" method="set_progress"]
+[connection signal="on_interacted" from="InteractionPrompt" to="." method="interact"]

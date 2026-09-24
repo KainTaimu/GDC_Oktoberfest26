@@ -4,13 +4,9 @@ extends Node2D
 
 signal on_progress_changed(new_value: float)
 
-enum Types { NONE, CHOPPING_BOARD, COOKING_POT }
+enum Types { NONE, CHOPPING_BOARD, COOKING_POT, MASHED_POTATO_STAND }
 
 @export var station_type: Types
-
-
-func _on_interaction_prompt_on_interacted() -> void:
-	interact()
 
 
 @abstract

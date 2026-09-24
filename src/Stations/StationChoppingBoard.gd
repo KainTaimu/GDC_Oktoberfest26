@@ -2,8 +2,11 @@ extends AbstractStation
 
 func interact() -> void:
 	var held := LevelData.main_player.find_child("PlayerHeldIngredient") as PlayerHeldIngredient
-	if held == null:
-		CustomLogger.log_debug("no held ingredient")
+	assert(held != null, "expected LevelData.main_player to have PlayerHeldIngredient")
+
+	var ingredient := held.get_held_ingredient()
+	if ingredient == null:
+		CustomLogger.log_debug("cant chop: no held item")
 		return
-	held.held_ingredient.try_station_action(self)
-	CustomLogger.log_debug(held)
+
+	ingredient.try_station_action(self)

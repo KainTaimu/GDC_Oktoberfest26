@@ -39,4 +39,4 @@ text = "Cooking Pot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="on_interacted" from="InteractionPrompt" to="." method="_on_interaction_prompt_on_interacted"]
+[connection signal="on_interacted" from="InteractionPrompt" to="." method="interact"]
