@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://draeyg1sft7ba"]
+
+[ext_resource type="Theme" uid="uid://cvkrj645egp6" path="res://resources/Themes/TopBar.tres" id="1_vghdu"]
+[ext_resource type="Script" uid="uid://q68mep7pikto" path="res://src/UI/MoneyDisplay.gd" id="2_86vvi"]
+
+[sub_resource type="GDScript" id="GDScript_puxyr"]
+script/source = "@tool
+extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		hide()
+	else:
+		show()
+"
+
+[node name="TopBar" type="CanvasLayer" unique_id=267657025]
+script = SubResource("GDScript_puxyr")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=568865047]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme = ExtResource("1_vghdu")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1212853518]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/MarginContainer" unique_id=635988209]
+layout_mode = 2
+
+[node name="MoneyDisplay" type="RichTextLabel" parent="PanelContainer/MarginContainer/HSplitContainer" unique_id=848516366]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "$XXX"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("2_86vvi")
+metadata/_edit_lock_ = true

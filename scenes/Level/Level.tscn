@@ -1,21 +1,9 @@
 [gd_scene format=3 uid="uid://ci37mmq6y6stu"]
 
 [ext_resource type="PackedScene" uid="uid://d1w5ccem33kle" path="res://scenes/Player/Player.tscn" id="1_q3201"]
-[ext_resource type="PackedScene" uid="uid://bmhdg8346k1j7" path="res://scenes/Interactable/StationPretzel.tscn" id="2_wywgn"]
-[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="3_xh0y6"]
+[ext_resource type="PackedScene" uid="uid://3pqmmqmplwci" path="res://scenes/Stations/StationCookingPot.tscn" id="4_xh0y6"]
+[ext_resource type="PackedScene" uid="uid://b6i7oasowpmbj" path="res://scenes/Stations/StationChoppingBoard.tscn" id="5_ydaos"]
 [ext_resource type="Script" uid="uid://bg0uk35hh6ra7" path="res://src/Level/LevelDataSceneProxy.gd" id="6_ooqe3"]
-
-[sub_resource type="Resource" id="Resource_xh0y6"]
-resource_local_to_scene = true
-script = ExtResource("3_xh0y6")
-base_value = 0.5
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
-
-[sub_resource type="Resource" id="Resource_ydaos"]
-resource_local_to_scene = true
-script = ExtResource("3_xh0y6")
-base_value = 2.0
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [node name="Level" type="Node2D" unique_id=84571663]
 
@@ -29,6 +17,7 @@ texture_repeat = 2
 
 [node name="Player" parent="." unique_id=825915892 instance=ExtResource("1_q3201")]
 
-[node name="StationPretzel" parent="." unique_id=1150379251 instance=ExtResource("2_wywgn")]
-seconds_per_item = SubResource("Resource_xh0y6")
-money_per_item = SubResource("Resource_ydaos")
+[node name="StationChoppingBoard" parent="." unique_id=1926220177 instance=ExtResource("5_ydaos")]
+
+[node name="StationCookingPot" parent="." unique_id=916477200 instance=ExtResource("4_xh0y6")]
+position = Vector2(687, 0)

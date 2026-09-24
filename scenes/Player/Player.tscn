@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dhw6e2g4e8dq1" path="res://src/Player/Player.gd" id="1_ky53y"]
 [ext_resource type="Script" uid="uid://c4lo68sy2t4nt" path="res://src/Player/PlayerStats.gd" id="2_bvqhm"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="3_ved6o"]
+[ext_resource type="Script" uid="uid://bcxrdnmca37va" path="res://src/Player/PlayerHeldIngredient.gd" id="5_fxc31"]
 [ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="5_xcisb"]
-[ext_resource type="PackedScene" uid="uid://jsawslw88heg" path="res://scenes/UI/Inventory.tscn" id="6_socpp"]
-[ext_resource type="Theme" uid="uid://cvkrj645egp6" path="res://resources/Themes/TopBar.tres" id="7_fxc31"]
-[ext_resource type="Script" uid="uid://q68mep7pikto" path="res://src/UI/MoneyDisplay.gd" id="9_dqp0f"]
+[ext_resource type="PackedScene" uid="uid://diwo8aoje52l3" path="res://scenes/Ingredients/IngredientPotatoes.tscn" id="6_puxyr"]
+[ext_resource type="PackedScene" uid="uid://draeyg1sft7ba" path="res://scenes/UI/TopBar.tscn" id="6_socpp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxc31"]
 radius = 16.03122
@@ -71,6 +71,36 @@ _player_node = NodePath("..")
 _player_stats = NodePath("../PlayerStats")
 _player_sprite = NodePath("../AnimatedSprite2D")
 
+[node name="PlayerHeldIngredient" type="Node2D" parent="." unique_id=1406850048 node_paths=PackedStringArray("held_ingredient", "label")]
+script = ExtResource("5_fxc31")
+held_ingredient = NodePath("IngredientPotatoes")
+label = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerHeldIngredient" unique_id=850349578]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -41.0
+offset_right = 26.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 14
+text = "dasdasd"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IngredientPotatoes" parent="PlayerHeldIngredient" unique_id=1910664322 node_paths=PackedStringArray("actions_mapping") instance=ExtResource("6_puxyr")]
+actions_mapping = {
+1: NodePath("ActionBehaviorChoppable")
+}
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1726505682]
 sprite_frames = SubResource("SpriteFrames_do71q")
 autoplay = "default"
@@ -78,33 +108,5 @@ frame_progress = 0.8709986
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=713256097]
 
-[node name="Inventory" parent="." unique_id=24067664 instance=ExtResource("6_socpp")]
-
-[node name="TopBar" type="CanvasLayer" parent="." unique_id=719786915]
-
-[node name="PanelContainer" type="PanelContainer" parent="TopBar" unique_id=1947035639]
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme = ExtResource("7_fxc31")
-
-[node name="MarginContainer" type="MarginContainer" parent="TopBar/PanelContainer" unique_id=619821083]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 2
-
-[node name="HSplitContainer" type="HSplitContainer" parent="TopBar/PanelContainer/MarginContainer" unique_id=2128462064]
-layout_mode = 2
-
-[node name="MoneyDisplay" type="RichTextLabel" parent="TopBar/PanelContainer/MarginContainer/HSplitContainer" unique_id=1747882091]
-layout_mode = 2
-size_flags_horizontal = 3
-bbcode_enabled = true
-text = "$XXX"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("9_dqp0f")
-metadata/_edit_lock_ = true
+[node name="TopBar" parent="." unique_id=267657025 instance=ExtResource("6_socpp")]
+visible = false

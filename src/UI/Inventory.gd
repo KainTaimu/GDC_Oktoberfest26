@@ -1,3 +1,4 @@
+@tool
 class_name Inventory
 extends CanvasLayer
 
@@ -13,6 +14,10 @@ var _default_body_position: Vector2
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		hide()
+		return
+	show()
 	_default_body_position = _body.position
 
 

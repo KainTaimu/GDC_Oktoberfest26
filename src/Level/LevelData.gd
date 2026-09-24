@@ -2,6 +2,7 @@ extends Node
 
 signal on_money_changed(new_value: int, previous_value: int)
 
+var main_player: Player
 var money: int:
 	get:
 		return money
@@ -13,3 +14,4 @@ var money: int:
 
 func reset():
 	money = 0
+	main_player = null
