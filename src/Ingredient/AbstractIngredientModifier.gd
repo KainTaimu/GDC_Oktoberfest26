@@ -12,10 +12,10 @@ var modifier_name: StringName:
 var modifier_type: Type:
 	get:
 		return _modifier_type
-	
-	
+
 # NOTE: MUST ADD AN ENTRY EVERY FOR EVERY INGREDIENTMODIFIER
-enum Type {NONE, CHOPPED}
+enum Type { NONE, CHOPPED }
+
 
 @abstract
 func try_apply_modifier() -> bool

@@ -35,5 +35,9 @@ func has_modifier(type: AbstractIngredientModifier.Type) -> bool:
 	return _modifiers.any(func(x: AbstractIngredientModifier): return x.get_modifier_type() == type && x.active)
 
 
+func _exit_tree() -> void:
+	on_changed.emit()
+
+
 func _to_string() -> String:
 	return "Ingredient(%s)" % base_ingredient_name

@@ -15,7 +15,7 @@ func _cook_pototoes(ingredient: Ingredient, held: PlayerHeldIngredient):
 	if not ingredient.has_modifier(AbstractIngredientModifier.Type.CHOPPED):
 		CustomLogger.log_debug("cant cook potatoes")
 		return
-	
+
 	ingredient.queue_free()
 	var mashed_scene := load("uid://u85y0onbn35r") as PackedScene
 	var mashed := mashed_scene.instantiate()

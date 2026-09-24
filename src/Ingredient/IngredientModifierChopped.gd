@@ -14,4 +14,3 @@ func try_apply_modifier() -> bool:
 
 func get_modifier_name() -> StringName:
 	return modifier_name if chopped else &""
-
