@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_m5o20"]
 resource_local_to_scene = true
 script = ExtResource("2_hdnqr")
-base_value = 2.0
+base_value = 4.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="Resource" id="Resource_hdnqr"]
@@ -37,3 +37,19 @@ station_type = 3
 
 [node name="InteractionPrompt" parent="." index="1" unique_id=1811079141]
 interact_behavior = SubResource("Resource_wdtiy")
+
+[node name="Label" parent="." index="2" unique_id=689880663]
+custom_maximum_size = Vector2(64, -1)
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -95.0
+offset_right = 32.0
+offset_bottom = -32.0
+grow_vertical = 0
+text = "Mashed Potatoes Stand"
+autowrap_mode = 2
+
+[node name="Progress" parent="." index="3" unique_id=487557772]
+position = Vector2(0, -75)

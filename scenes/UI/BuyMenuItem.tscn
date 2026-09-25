@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cedr2f0bocc20"]
+
+[ext_resource type="Script" uid="uid://cvrxlyc1ppi0h" path="res://src/UI/BuyMenuItem.gd" id="1_qwo25"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_do71q"]
+size = Vector2(32, 32)
+
+[node name="BuyMenuItem" type="MarginContainer" unique_id=98650462 node_paths=PackedStringArray("_name_label", "_price_label", "_icon")]
+custom_minimum_size = Vector2(176, 176)
+custom_maximum_size = Vector2(176, 176)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_qwo25")
+item_name = &"ITEM"
+item_price = 485
+item_icon = SubResource("PlaceholderTexture2D_do71q")
+_name_label = NodePath("VBoxContainer/Name")
+_price_label = NodePath("VBoxContainer/Price")
+_icon = NodePath("VBoxContainer/TextureRect")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1731885351]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer" unique_id=1848059898]
+layout_mode = 2
+text = "ITEM"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=692913888]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("PlaceholderTexture2D_do71q")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Price" type="RichTextLabel" parent="VBoxContainer" unique_id=793893243]
+layout_mode = 2
+bbcode_enabled = true
+text = "$485"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

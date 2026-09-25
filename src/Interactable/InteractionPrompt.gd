@@ -69,7 +69,6 @@ func _process(delta: float) -> void:
 
 		if progress >= 1.0 and not was_complete:
 			on_interacted.emit()
-	queue_redraw()
 
 
 func _input(event: InputEvent) -> void:

@@ -2,6 +2,11 @@
 class_name AbstractFsmState
 extends Node2D
 
+enum States { NONE, IDLE, WORKING, WAITING_FOR_WORK }
+
+@export var state: States = States.NONE
+
+
 @abstract
 func start() -> void
 

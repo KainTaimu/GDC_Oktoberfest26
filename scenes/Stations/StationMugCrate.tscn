@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dlwylg46kta1b"]
+
+[ext_resource type="PackedScene" uid="uid://djyqyqr25dssl" path="res://scenes/Stations/StationIngredientGiver.tscn" id="1_kq0he"]
+[ext_resource type="PackedScene" uid="uid://cb7r4yagaljer" path="res://scenes/Ingredients/IngredientBeerMug.tscn" id="2_kq0he"]
+[ext_resource type="Script" uid="uid://fm67ugt30l3j" path="res://src/Interactable/InteractBehaviorHold.gd" id="2_wktlt"]
+
+[sub_resource type="Resource" id="Resource_h6h35"]
+resource_local_to_scene = true
+script = ExtResource("2_wktlt")
+metadata/_custom_type_script = "uid://fm67ugt30l3j"
+
+[node name="StationMugCrate" unique_id=959148533 instance=ExtResource("1_kq0he")]
+label_name = &"Mug crate"
+gives = ExtResource("2_kq0he")
+station_type = 6
+
+[node name="InteractionPrompt" parent="." index="1" unique_id=1811079141]
+interact_behavior = SubResource("Resource_h6h35")
+
+[node name="Label" parent="." index="2" unique_id=1780100358]
+text = "Mug crate"

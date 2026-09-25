@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://duknwq443g36c"]
+
+[ext_resource type="Script" uid="uid://csh02pqoruq4p" path="res://src/Helpers/States/FsmStateIdle.gd" id="1_7cqy6"]
+
+[node name="FsmStateIdle" type="Node2D" unique_id=210564790]
+script = ExtResource("1_7cqy6")
+state = 1

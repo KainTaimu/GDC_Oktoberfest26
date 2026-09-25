@@ -2,9 +2,8 @@ class_name FsmStateGotoStation
 extends AbstractFsmState
 
 @export var _state_name: StringName = &"goto_station"
-@export var owner_node: CharacterBody2D
+@export var owner_node: Helper
 @export var station_routes: RecipeRoute
-@export var move_speed: Stat
 
 @onready var fsm_manager: HelperFsm = $".."
 
@@ -31,7 +30,7 @@ func start() -> void:
 
 
 func end() -> void:
-	fsm_manager.current_state = %"FsmStateIdle"
+	pass
 
 
 func process(_delta: float):
@@ -44,6 +43,9 @@ func process(_delta: float):
 
 		station_idx = wrapi(station_idx + 1, 0, station_routes.length)
 		var closest := _get_closest_station(station_routes.get_station(station_idx))
+		if closest == null:
+			fsm_manager.transition(States.WAITING_FOR_WORK)
+			return
 		navigation_agent.set_target_position(closest.global_position)
 
 		if station_idx == station_routes.length - 1:
@@ -52,7 +54,7 @@ func process(_delta: float):
 
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 
-	var new_velocity: Vector2 = global_position.direction_to(next_path_position) * move_speed.value
+	var new_velocity: Vector2 = global_position.direction_to(next_path_position) * owner_node.move_speed.value
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.set_velocity(new_velocity)
 	else:

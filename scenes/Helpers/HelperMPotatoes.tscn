@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://db8g6khatm1va"]
+
+[ext_resource type="PackedScene" uid="uid://ccsw34iu1ba5g" path="res://scenes/Helpers/Helper.tscn" id="1_583y4"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_ygx0i"]
+[ext_resource type="PackedScene" uid="uid://dd0f5tmh2jud1" path="res://scenes/Helpers/States/FsmStateGotoStation.tscn" id="3_r0gae"]
+[ext_resource type="Resource" uid="uid://bo8b2ok02yc4t" path="res://resources/RecipeRoutes/MashedPotatoes.tres" id="4_ik2r8"]
+[ext_resource type="PackedScene" uid="uid://c4thhlcvkal7x" path="res://scenes/Helpers/States/FsmStateWaitingForWork.tscn" id="5_ik2r8"]
+
+[sub_resource type="Resource" id="Resource_r0gae"]
+resource_local_to_scene = true
+script = ExtResource("2_ygx0i")
+base_value = 200.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[node name="HelperMPotatoes" unique_id=265917294 instance=ExtResource("1_583y4")]
+move_speed = SubResource("Resource_r0gae")
+
+[node name="HelperFsm" parent="." index="2" unique_id=1274066329 node_paths=PackedStringArray("current_state")]
+current_state = NodePath("FsmStateWaitingForWork")
+
+[node name="FsmStateGotoStation" parent="HelperFsm" index="1" unique_id=236485522 node_paths=PackedStringArray("owner_node") instance=ExtResource("3_r0gae")]
+owner_node = NodePath("../..")
+station_routes = ExtResource("4_ik2r8")
+
+[node name="FsmStateWaitingForWork" parent="HelperFsm" index="2" unique_id=114355789 node_paths=PackedStringArray("work_state") instance=ExtResource("5_ik2r8")]
+work_state = NodePath("../FsmStateGotoStation")
+station_routes = ExtResource("4_ik2r8")

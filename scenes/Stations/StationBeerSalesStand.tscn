@@ -40,3 +40,7 @@ interact_behavior = SubResource("Resource_3ckip")
 
 [node name="Label" parent="." index="2" unique_id=689880663]
 text = "Beer Stand"
+
+[node name="Progress" parent="." index="3" unique_id=487557772]
+z_index = 1
+position = Vector2(0, -75)

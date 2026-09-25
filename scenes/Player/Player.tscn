@@ -6,8 +6,9 @@
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="3_ved6o"]
 [ext_resource type="Script" uid="uid://bcxrdnmca37va" path="res://src/Player/PlayerHeldIngredient.gd" id="5_fxc31"]
 [ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="5_xcisb"]
-[ext_resource type="PackedScene" uid="uid://diwo8aoje52l3" path="res://scenes/Ingredients/IngredientPotatoes.tscn" id="6_puxyr"]
 [ext_resource type="PackedScene" uid="uid://draeyg1sft7ba" path="res://scenes/UI/TopBar.tscn" id="6_socpp"]
+[ext_resource type="PackedScene" uid="uid://dll3vngngepji" path="res://scenes/UI/BuyMenu.tscn" id="9_dqp0f"]
+[ext_resource type="PackedScene" uid="uid://jsawslw88heg" path="res://scenes/UI/Inventory.tscn" id="9_mmokv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxc31"]
 radius = 16.03122
@@ -55,6 +56,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1625036403 node_paths=PackedStringArray("held_ingredient")]
+z_index = 256
 collision_mask = 2
 script = ExtResource("1_ky53y")
 held_ingredient = NodePath("PlayerHeldIngredient")
@@ -73,9 +75,8 @@ _player_node = NodePath("..")
 _player_stats = NodePath("../PlayerStats")
 _player_sprite = NodePath("../AnimatedSprite2D")
 
-[node name="PlayerHeldIngredient" type="Node2D" parent="." unique_id=1406850048 node_paths=PackedStringArray("_held_ingredient", "label")]
+[node name="PlayerHeldIngredient" type="Node2D" parent="." unique_id=1406850048 node_paths=PackedStringArray("label")]
 script = ExtResource("5_fxc31")
-_held_ingredient = NodePath("IngredientPotatoes")
 label = NodePath("RichTextLabel")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PlayerHeldIngredient" unique_id=850349578]
@@ -98,12 +99,6 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IngredientPotatoes" parent="PlayerHeldIngredient" unique_id=1910664322 node_paths=PackedStringArray("actions_mapping") instance=ExtResource("6_puxyr")]
-actions_mapping = {
-1: NodePath("IngredientModifierChopped"),
-2: NodePath("IngredientModifierCookMashed")
-}
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1726505682]
 sprite_frames = SubResource("SpriteFrames_do71q")
 autoplay = "default"
@@ -112,4 +107,10 @@ frame_progress = 0.8709986
 [node name="Camera2D" type="Camera2D" parent="." unique_id=713256097]
 
 [node name="TopBar" parent="." unique_id=267657025 instance=ExtResource("6_socpp")]
+visible = false
+
+[node name="Inventory" parent="." unique_id=24067664 instance=ExtResource("9_mmokv")]
+visible = false
+
+[node name="BuyMenu" parent="." unique_id=1245596724 instance=ExtResource("9_dqp0f")]
 visible = false

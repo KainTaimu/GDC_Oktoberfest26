@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://vojbxj0sf2cg"]
+
+[ext_resource type="Script" uid="uid://dum54gwvc1p5h" path="res://src/UI/BuyItemHeld.gd" id="1_nbp1j"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_do71q"]
+size = Vector2(64, 64)
+
+[node name="BuyItemHeld" type="Node2D" unique_id=499344254]
+top_level = true
+script = ExtResource("1_nbp1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1002280150]
+texture_repeat = 2
+texture = SubResource("PlaceholderTexture2D_do71q")

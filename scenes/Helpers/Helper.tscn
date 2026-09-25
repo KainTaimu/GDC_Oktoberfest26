@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://vcsjcnjd17ay" path="res://src/Helpers/Helper.gd" id="1_rgd1u"]
 [ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="2_xmxpy"]
 [ext_resource type="Script" uid="uid://dt26vvgyd7wg7" path="res://src/Helpers/HelperFsm.gd" id="3_kyptm"]
-[ext_resource type="Script" uid="uid://csh02pqoruq4p" path="res://src/Helpers/States/FsmStateIdle.gd" id="4_xmxpy"]
-[ext_resource type="Script" uid="uid://ggdlpbvg747j" path="res://src/Helpers/States/FsmStateGotoStation.gd" id="5_xmxpy"]
+[ext_resource type="PackedScene" uid="uid://duknwq443g36c" path="res://scenes/Helpers/States/FsmStateIdle.tscn" id="5_xmxpy"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_kyptm"]
-[ext_resource type="Resource" uid="uid://bo8b2ok02yc4t" path="res://resources/RecipeRoutes/MashedPotatoes.tres" id="6_rsfvd"]
+
+[sub_resource type="Resource" id="Resource_rsfvd"]
+resource_local_to_scene = true
+script = ExtResource("6_kyptm")
+base_value = 200.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbwam"]
 radius = 16.03122
@@ -47,35 +51,33 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="Resource" id="Resource_3gwmf"]
-resource_local_to_scene = true
-script = ExtResource("6_kyptm")
-base_value = 200.0
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
+[sub_resource type="GDScript" id="GDScript_jwpct"]
+script/source = "extends AnimatedSprite2D
 
-[node name="Helper" type="CharacterBody2D" unique_id=265917294]
+@export var cbody: CharacterBody2D
+
+func _process(_delta: float) -> void:
+	if Engine.get_process_frames() % 30:
+		flip_h = cbody.velocity.x < 0
+"
+
+[node name="Helper" type="CharacterBody2D" unique_id=265917294 groups=["helpers"]]
 script = ExtResource("1_rgd1u")
+move_speed = SubResource("Resource_rsfvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=731935237]
 shape = SubResource("CircleShape2D_kbwam")
 disabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=834254190]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=834254190 node_paths=PackedStringArray("cbody")]
 sprite_frames = SubResource("SpriteFrames_2vivg")
 autoplay = "default"
+script = SubResource("GDScript_jwpct")
+cbody = NodePath("..")
 
 [node name="HelperFsm" type="Node2D" parent="." unique_id=1274066329 node_paths=PackedStringArray("target", "current_state")]
 script = ExtResource("3_kyptm")
 target = NodePath("..")
-current_state = NodePath("FsmStateGotoStation")
+current_state = NodePath("FsmStateIdle")
 
-[node name="FsmStateIdle" type="Node2D" parent="HelperFsm" unique_id=25768101]
-unique_name_in_owner = true
-script = ExtResource("4_xmxpy")
-
-[node name="FsmStateGotoStation" type="Node2D" parent="HelperFsm" unique_id=300112348 node_paths=PackedStringArray("owner_node")]
-unique_name_in_owner = true
-script = ExtResource("5_xmxpy")
-owner_node = NodePath("../..")
-station_routes = ExtResource("6_rsfvd")
-move_speed = SubResource("Resource_3gwmf")
+[node name="FsmStateIdle" parent="HelperFsm" unique_id=210564790 instance=ExtResource("5_xmxpy")]

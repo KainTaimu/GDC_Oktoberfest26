@@ -6,7 +6,7 @@ var poured: bool
 
 func try_apply_modifier() -> bool:
 	if poured:
-		CustomLogger.log_debug("cant chop: already chopped")
+		CustomLogger.log_debug("cant pour: already poured")
 		return false
 	poured = true
 	active = true

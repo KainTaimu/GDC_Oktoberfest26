@@ -59,7 +59,6 @@ offset_right = 49.5
 offset_bottom = -41.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "M. Potato Stand"
 horizontal_alignment = 1
 
 [node name="Progress" type="Node2D" parent="." unique_id=487557772]

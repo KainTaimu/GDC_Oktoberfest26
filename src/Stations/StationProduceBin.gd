@@ -4,7 +4,6 @@ extends AbstractStation
 
 
 func interact() -> void:
-	CustomLogger.log_debug("opening produce bin")
 	var held := LevelData.main_player.held_ingredient
 	assert(held != null)
 

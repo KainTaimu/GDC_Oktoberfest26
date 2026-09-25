@@ -29,6 +29,22 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="GDScript" id="GDScript_rhs5j"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	var group := get_tree().get_nodes_in_group(\"helpers\")
+	if len(group) == 0:
+		return
+	for node in group:
+		var helper := node as Helper
+		if helper == null:
+			continue
+		helper.move_speed.multipliers.append(1.5)
+	queue_free()
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi14h"]
 content_margin_left = 4.0
 content_margin_top = 32.0
@@ -49,6 +65,7 @@ corner_radius_bottom_right = 4
 corner_detail = 5
 
 [node name="Inventory" type="CanvasLayer" unique_id=24067664 node_paths=PackedStringArray("_body", "_main_panel", "_close_button")]
+visible = false
 script = ExtResource("1_3n8s2")
 _body = NodePath("Body")
 _main_panel = NodePath("Body/VBoxContainer/MainPanel")
@@ -69,6 +86,8 @@ theme = ExtResource("1_oi14h")
 theme_override_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Body" unique_id=870015659]
+custom_minimum_size = Vector2(256, 952)
+custom_maximum_size = Vector2(256, 952)
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
@@ -89,40 +108,39 @@ vertical_alignment = 1
 
 [node name="MainPanel" type="PanelContainer" parent="Body/VBoxContainer" unique_id=806979282]
 custom_minimum_size = Vector2(256, 952)
+custom_maximum_size = Vector2(256, 952)
 layout_mode = 2
 theme = ExtResource("1_oi14h")
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhs5j")
 
 [node name="MarginContainer" type="MarginContainer" parent="Body/VBoxContainer/MainPanel" unique_id=2024587519]
 layout_mode = 2
-theme_override_constants/margin_left = 4
+theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
+theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Body/VBoxContainer/MainPanel/MarginContainer" unique_id=1793121257]
 layout_mode = 2
-alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Body/VBoxContainer/MainPanel/MarginContainer/VBoxContainer" unique_id=465549900]
+[node name="Button" type="Button" parent="Body/VBoxContainer/MainPanel/MarginContainer/VBoxContainer" unique_id=1998921311]
 layout_mode = 2
-bbcode_enabled = true
-text = "BLA"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-vertical_alignment = 1
+text = "Fent ×1"
+alignment = 0
+script = SubResource("GDScript_rhs5j")
 
 [node name="CenterContainer" type="CenterContainer" parent="Body" unique_id=1709595361]
 layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="Body/CenterContainer" unique_id=1177535169]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_oi14h")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_oi14h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3n8s2")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_oi14h")
 theme_override_styles/focus = SubResource("StyleBoxFlat_oi14h")
-text = "<"
+text = ">"
 
+[connection signal="pressed" from="Body/VBoxContainer/MainPanel/MarginContainer/VBoxContainer/Button" to="Body/VBoxContainer/MainPanel/MarginContainer/VBoxContainer/Button" method="_on_pressed"]
 [connection signal="pressed" from="Body/CenterContainer/CloseButton" to="." method="toggle_show"]

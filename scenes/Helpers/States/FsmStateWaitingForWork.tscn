@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://c4thhlcvkal7x"]
+
+[ext_resource type="Script" uid="uid://djlc7vrrl6res" path="res://src/Helpers/States/FsmStateWaitingForWork.gd" id="1_wphgn"]
+
+[sub_resource type="GDScript" id="GDScript_do71q"]
+script/source = "extends Label
+
+
+func _on_timer_timeout() -> void:
+	visible_characters = wrapi(visible_characters + 1, 0, len(text) + 1)
+"
+
+[sub_resource type="GDScript" id="GDScript_yilvy"]
+script/source = "extends Timer
+
+
+func _ready() -> void:
+	var parent := get_parent() as CanvasItem
+	parent.visibility_changed.connect(func(): 
+		process_mode = Node.PROCESS_MODE_INHERIT if parent.visible else Node.PROCESS_MODE_DISABLED
+	)
+"
+
+[node name="FsmStateWaitingForWork" type="Node2D" unique_id=114355789]
+script = ExtResource("1_wphgn")
+state = 3
+
+[node name="Label" type="Label" parent="." unique_id=1025909312]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "..."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_do71q")
+
+[node name="Timer" type="Timer" parent="Label" unique_id=1866781961]
+wait_time = 0.5
+autostart = true
+script = SubResource("GDScript_yilvy")
+
+[connection signal="on_work_finished" from="." to="Label" method="hide"]
+[connection signal="on_work_started" from="." to="Label" method="show"]
+[connection signal="timeout" from="Label/Timer" to="Label" method="_on_timer_timeout"]
