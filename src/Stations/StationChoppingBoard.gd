@@ -10,3 +10,7 @@ func interact() -> void:
 		return
 
 	ingredient.try_station_action(self)
+
+
+func interact_forced() -> void:
+	pass

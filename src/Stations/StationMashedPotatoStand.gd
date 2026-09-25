@@ -1,6 +1,7 @@
 class_name StationMashedPotatoStand
 extends AbstractStation
 
+@export var items_per_interaction: Stat
 @export var seconds_per_item: Stat
 @export var money_per_item: Stat
 
@@ -35,4 +36,8 @@ func interact() -> void:
 		CustomLogger.log_debug("cant sell: held item not mashed potatoes")
 		return
 	held.try_set_held_ingredient(null)
-	quantity += 10
+	quantity += roundi(items_per_interaction.value)
+
+
+func interact_forced() -> void:
+	quantity += roundi(items_per_interaction.value)

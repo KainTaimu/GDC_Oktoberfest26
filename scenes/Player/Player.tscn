@@ -55,6 +55,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1625036403 node_paths=PackedStringArray("held_ingredient")]
+collision_mask = 2
 script = ExtResource("1_ky53y")
 held_ingredient = NodePath("PlayerHeldIngredient")
 

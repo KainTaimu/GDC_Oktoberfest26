@@ -7,6 +7,12 @@
 [ext_resource type="Script" uid="uid://c8h24culo3ew3" path="res://src/UI/ProgressPie.gd" id="5_xw3ci"]
 [ext_resource type="Script" uid="uid://cod7jdxwjyi0e" path="res://src/UI/MoneyPopup.gd" id="6_h2604"]
 
+[sub_resource type="Resource" id="Resource_3gwmf"]
+resource_local_to_scene = true
+script = ExtResource("2_ve1nr")
+base_value = 2.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
 [sub_resource type="Resource" id="Resource_ve1nr"]
 resource_local_to_scene = true
 script = ExtResource("2_ve1nr")
@@ -19,26 +25,27 @@ script = ExtResource("2_ve1nr")
 base_value = 2.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_7f2ed"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5uv32"]
+size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_xw3ci"]
 resource_local_to_scene = true
 script = ExtResource("3_7f2ed")
 metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5uv32"]
-size = Vector2(64, 64)
-
-[node name="StationMashedPotatoStand" type="Node2D" unique_id=1090745131]
+[node name="StationMashedPotatoStand" type="Node2D" unique_id=1090745131 groups=["stations", "stations_sell"]]
 script = ExtResource("1_6phe4")
+items_per_interaction = SubResource("Resource_3gwmf")
 seconds_per_item = SubResource("Resource_ve1nr")
 money_per_item = SubResource("Resource_n1ag2")
 station_type = 3
 
-[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_5uv32")]
-interact_behavior = SubResource("Resource_7f2ed")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1549823168]
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_5uv32")
+
+[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_5uv32")]
+interact_behavior = SubResource("Resource_xw3ci")
 
 [node name="Label" type="Label" parent="." unique_id=689880663]
 anchors_preset = 8

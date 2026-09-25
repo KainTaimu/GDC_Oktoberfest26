@@ -7,18 +7,30 @@
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_a54cq"]
 [ext_resource type="Script" uid="uid://bg0uk35hh6ra7" path="res://src/Level/LevelDataSceneProxy.gd" id="6_ooqe3"]
 [ext_resource type="PackedScene" uid="uid://b6tqqw7p7shht" path="res://scenes/Stations/StationProduceBin.tscn" id="7_a54cq"]
-
-[sub_resource type="Resource" id="Resource_a54cq"]
-resource_local_to_scene = true
-script = ExtResource("6_a54cq")
-base_value = 1.0
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
+[ext_resource type="PackedScene" uid="uid://ccsw34iu1ba5g" path="res://scenes/Helpers/Helper.tscn" id="8_3gwmf"]
 
 [sub_resource type="Resource" id="Resource_3gwmf"]
 resource_local_to_scene = true
 script = ExtResource("6_a54cq")
 base_value = 2.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_2prus"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 1.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_f3r0x"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 2.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_f3r0x"]
+vertices = PackedVector2Array(2147.8672, -630.03906, 2130.1172, 805.8828, 418, 66.21094, 418, -39.78125, -1071.0781, 770.10156, 228.15625, 129.49219, -1082.9063, -645.9531, 267.6797, 9.21875, 124.27344, 149.46094, 228.14844, 129.47656, 132.75, 163.10156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(6, 0, 3, 7), PackedInt32Array(4, 6, 7, 8), PackedInt32Array(9, 5, 4, 10), PackedInt32Array(4, 8, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1093, -656, 2158, -640, 2140, 816, -1081, 780)])
 
 [node name="Level" type="Node2D" unique_id=84571663]
 
@@ -32,15 +44,27 @@ texture_repeat = 2
 
 [node name="Player" parent="." unique_id=825915892 instance=ExtResource("1_q3201")]
 
-[node name="StationChoppingBoard" parent="." unique_id=1926220177 instance=ExtResource("5_ydaos")]
+[node name="StationChoppingBoard" parent="." unique_id=1926220177 groups=["stations"] instance=ExtResource("5_ydaos")]
+position = Vector2(227, -13)
 
-[node name="StationCookingPot" parent="." unique_id=916477200 instance=ExtResource("4_xh0y6")]
+[node name="StationCookingPot" parent="." unique_id=916477200 groups=["stations"] instance=ExtResource("4_xh0y6")]
 position = Vector2(687, 0)
 
 [node name="StationMashedPotatoStand" parent="." unique_id=1090745131 instance=ExtResource("5_ooqe3")]
-position = Vector2(380, 180)
-seconds_per_item = SubResource("Resource_a54cq")
-money_per_item = SubResource("Resource_3gwmf")
+position = Vector2(464, 88)
+items_per_interaction = SubResource("Resource_3gwmf")
+seconds_per_item = SubResource("Resource_2prus")
+money_per_item = SubResource("Resource_f3r0x")
 
-[node name="StationProduceBin" parent="." unique_id=1472581706 instance=ExtResource("7_a54cq")]
+[node name="StationProduceBin" parent="." unique_id=1472581706 groups=["stations"] instance=ExtResource("7_a54cq")]
 position = Vector2(179, 213)
+
+[node name="Helper" parent="." unique_id=265917294 instance=ExtResource("8_3gwmf")]
+position = Vector2(-68, 120)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1473415961]
+navigation_polygon = SubResource("NavigationPolygon_f3r0x")
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D" unique_id=2052768716]
+position = Vector2(98, -82)
+polygon = PackedVector2Array(39, 233, 175, 100, 310, 56, 310, 141, 127, 202)

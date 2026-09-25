@@ -12,6 +12,9 @@ resource_local_to_scene = true
 script = ExtResource("3_0cs76")
 metadata/_custom_type_script = "uid://fm67ugt30l3j"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do71q"]
+size = Vector2(64, 64)
+
 [node name="StationChoppingBoard" type="Node2D" unique_id=1926220177]
 script = ExtResource("1_mmded")
 station_type = 1
@@ -37,5 +40,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Chopping board"
 horizontal_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2076196092]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2044817451]
+shape = SubResource("RectangleShape2D_do71q")
 
 [connection signal="on_interacted" from="InteractionPrompt" to="." method="interact"]

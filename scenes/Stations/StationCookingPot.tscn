@@ -4,24 +4,24 @@
 [ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_pe2t1"]
 [ext_resource type="Script" uid="uid://8h5nnxqt3j1a" path="res://src/Interactable/InteractBehaviorToggle.gd" id="3_x2kok"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wwupi"]
+size = Vector2(64, 64)
+
 [sub_resource type="Resource" id="Resource_pe2t1"]
 resource_local_to_scene = true
 script = ExtResource("3_x2kok")
 metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wwupi"]
-size = Vector2(64, 64)
-
 [node name="StationCookingPot" type="Node2D" unique_id=916477200]
 script = ExtResource("1_wwupi")
 station_type = 2
 
-[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_pe2t1")]
-interact_behavior = SubResource("Resource_pe2t1")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1950277901]
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_wwupi")
+
+[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_pe2t1")]
+interact_behavior = SubResource("Resource_pe2t1")
 
 [node name="Label" type="Label" parent="." unique_id=2008593350]
 anchors_preset = 8

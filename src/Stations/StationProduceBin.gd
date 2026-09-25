@@ -9,3 +9,7 @@ func interact() -> void:
 
 	var mash := load("uid://diwo8aoje52l3").instantiate() as Ingredient
 	held.try_set_held_ingredient(mash)
+
+
+func interact_forced() -> void:
+	pass
