@@ -3,15 +3,10 @@ extends Node2D
 @export var _money_popup_label_scene: PackedScene = preload("uid://boy4dpw6345p8")
 
 
-func _ready() -> void:
-	LevelData.on_money_changed.connect(_spawn_popup)
-
-
-func _spawn_popup(new_value: int, old_value: int):
+func spawn_popup(earned_money: int):
 	var popup := _money_popup_label_scene.instantiate() as Label
-	var diff := new_value - old_value
-	var diff_sign := "+" if diff >= 0 else "-"
-	popup.text = "%s$%s" % [diff_sign, abs(diff)]
+	var diff_sign := "+" if earned_money >= 0 else "-"
+	popup.text = "%s$%s" % [diff_sign, abs(earned_money)]
 	add_child(popup)
 
 	var tween := popup.create_tween().set_ease(Tween.EASE_OUT)

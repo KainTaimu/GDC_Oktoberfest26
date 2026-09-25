@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dfws7sfb1srt6"]
+
+[ext_resource type="PackedScene" uid="uid://skjxtphpsw1j" path="res://scenes/Stations/StationSalesStand.tscn" id="1_m5o20"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_hdnqr"]
+[ext_resource type="Script" uid="uid://8h5nnxqt3j1a" path="res://src/Interactable/InteractBehaviorToggle.gd" id="3_v68k1"]
+
+[sub_resource type="Resource" id="Resource_m5o20"]
+resource_local_to_scene = true
+script = ExtResource("2_hdnqr")
+base_value = 2.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_hdnqr"]
+resource_local_to_scene = true
+script = ExtResource("2_hdnqr")
+base_value = 0.5
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_v68k1"]
+resource_local_to_scene = true
+script = ExtResource("2_hdnqr")
+base_value = 2.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_wdtiy"]
+resource_local_to_scene = true
+script = ExtResource("3_v68k1")
+metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
+
+[node name="StationMashedPotatoesSalesStand" unique_id=1090745131 instance=ExtResource("1_m5o20")]
+sells_what = 2
+label_name = &"M. Potato Stand"
+items_per_interaction = SubResource("Resource_m5o20")
+seconds_per_item = SubResource("Resource_hdnqr")
+money_per_item = SubResource("Resource_v68k1")
+station_type = 3
+
+[node name="InteractionPrompt" parent="." index="1" unique_id=1811079141]
+interact_behavior = SubResource("Resource_wdtiy")

@@ -22,7 +22,7 @@ var progress: float:
 	set(v):
 		progress = clampf(v, 0, 1)
 		queue_redraw()
-@export var progress_radius: float = 128:
+@export var progress_radius: float = 32:
 	get:
 		return progress_radius
 	set(v):

@@ -3,12 +3,16 @@ extends Node
 
 signal on_changed
 
+enum Types { NONE, POTATOES, MASHED_POTATOES, BEER_MUG }
+
 @export var base_ingredient_name: String:
 	get:
 		return base_ingredient_name
 	set(v):
 		base_ingredient_name = v
 		on_changed.emit()
+@export var ingredient_type: Types = Types.NONE
+
 @export var actions_mapping: Dictionary[AbstractStation.Types, AbstractIngredientModifier]
 
 var ingredient_name:

@@ -7,6 +7,7 @@
 [node name="IngredientPotatoes" type="Node" unique_id=1910664322 node_paths=PackedStringArray("actions_mapping")]
 script = ExtResource("1_8uerv")
 base_ingredient_name = "Potatoes"
+ingredient_type = 1
 actions_mapping = {
 1: NodePath("IngredientModifierChopped"),
 2: NodePath("IngredientModifierCookMashed")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RecipeRoute" format=3 uid="uid://nb42gd0bqfwj"]
+
+[ext_resource type="Script" uid="uid://dmnvyad64ygrv" path="res://src/Data/RecipeRoute.gd" id="1_773wd"]
+
+[resource]
+script = ExtResource("1_773wd")
+station_work_list = Array[int]([6, 5, 7])
+metadata/_custom_type_script = "uid://dmnvyad64ygrv"

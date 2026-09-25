@@ -14,7 +14,7 @@ var modifier_type: Type:
 		return _modifier_type
 
 # NOTE: MUST ADD AN ENTRY EVERY FOR EVERY INGREDIENTMODIFIER
-enum Type { NONE, CHOPPED }
+enum Type { NONE, CHOPPED, POURED }
 
 
 @abstract

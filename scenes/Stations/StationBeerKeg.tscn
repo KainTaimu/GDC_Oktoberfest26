@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dgl3t8eerkw68"]
+
+[ext_resource type="Script" uid="uid://b67072p3mqfd6" path="res://src/Stations/StationBeerKeg.gd" id="1_bmfvj"]
+[ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_ka2nr"]
+[ext_resource type="Script" uid="uid://8h5nnxqt3j1a" path="res://src/Interactable/InteractBehaviorToggle.gd" id="3_ijlth"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_teo0i"]
+size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_ka2nr"]
+resource_local_to_scene = true
+script = ExtResource("3_ijlth")
+metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
+
+[node name="StationBeerKeg" type="Node2D" unique_id=639856104 groups=["stations", "stations_production"]]
+script = ExtResource("1_bmfvj")
+station_type = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1722559199]
+texture_repeat = 2
+texture = SubResource("PlaceholderTexture2D_teo0i")
+
+[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_ka2nr")]
+interact_behavior = SubResource("Resource_ka2nr")
+
+[node name="Label" type="Label" parent="." unique_id=1027241424]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -56.0
+offset_right = 37.5
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Beer keg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="on_interacted" from="InteractionPrompt" to="." method="interact"]

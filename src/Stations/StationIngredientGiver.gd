@@ -1,10 +1,18 @@
+@tool
 extends AbstractStation
 
+@export var label_name: StringName:
+	get:
+		return label_name
+	set(v):
+		label_name = v
+		_label.text = v
 @export var gives: PackedScene
+
+@export var _label: Label
 
 
 func interact() -> void:
-	CustomLogger.log_debug("opening produce bin")
 	var held := LevelData.main_player.held_ingredient
 	assert(held != null)
 

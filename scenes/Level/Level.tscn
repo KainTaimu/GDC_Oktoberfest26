@@ -1,30 +1,65 @@
 [gd_scene format=3 uid="uid://ci37mmq6y6stu"]
 
 [ext_resource type="PackedScene" uid="uid://d1w5ccem33kle" path="res://scenes/Player/Player.tscn" id="1_q3201"]
+[ext_resource type="PackedScene" uid="uid://dgl3t8eerkw68" path="res://scenes/Stations/StationBeerKeg.tscn" id="3_2prus"]
 [ext_resource type="PackedScene" uid="uid://3pqmmqmplwci" path="res://scenes/Stations/StationCookingPot.tscn" id="4_xh0y6"]
-[ext_resource type="PackedScene" uid="uid://skjxtphpsw1j" path="res://scenes/Stations/StationMashedPotatoStand.tscn" id="5_ooqe3"]
 [ext_resource type="PackedScene" uid="uid://b6i7oasowpmbj" path="res://scenes/Stations/StationChoppingBoard.tscn" id="5_ydaos"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_a54cq"]
 [ext_resource type="Script" uid="uid://bg0uk35hh6ra7" path="res://src/Level/LevelDataSceneProxy.gd" id="6_ooqe3"]
 [ext_resource type="PackedScene" uid="uid://b6tqqw7p7shht" path="res://scenes/Stations/StationProduceBin.tscn" id="7_a54cq"]
 [ext_resource type="PackedScene" uid="uid://ccsw34iu1ba5g" path="res://scenes/Helpers/Helper.tscn" id="8_3gwmf"]
+[ext_resource type="PackedScene" uid="uid://djyqyqr25dssl" path="res://scenes/Stations/StationIngredientGiver.tscn" id="9_f3r0x"]
+[ext_resource type="PackedScene" uid="uid://cb7r4yagaljer" path="res://scenes/Ingredients/IngredientBeerMug.tscn" id="10_g4usa"]
+[ext_resource type="PackedScene" uid="uid://dfws7sfb1srt6" path="res://scenes/Stations/StationMashedPotatoesSalesStand.tscn" id="11_jwpct"]
+[ext_resource type="Resource" uid="uid://nb42gd0bqfwj" path="res://resources/RecipeRoutes/BeerRoute.tres" id="12_2krsq"]
+[ext_resource type="PackedScene" uid="uid://cgtdaihc80pco" path="res://scenes/Stations/StationBeerSalesStand.tscn" id="13_jwpct"]
 
-[sub_resource type="Resource" id="Resource_3gwmf"]
-resource_local_to_scene = true
-script = ExtResource("6_a54cq")
-base_value = 2.0
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
-
-[sub_resource type="Resource" id="Resource_2prus"]
+[sub_resource type="Resource" id="Resource_jwpct"]
 resource_local_to_scene = true
 script = ExtResource("6_a54cq")
 base_value = 1.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_f3r0x"]
+[sub_resource type="Resource" id="Resource_drtc2"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 0.6
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_vjm0i"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 5.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_u7pce"]
 resource_local_to_scene = true
 script = ExtResource("6_a54cq")
 base_value = 2.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_osyuy"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 0.5
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_bv6dm"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 2.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_wxycr"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 200.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_uewgd"]
+resource_local_to_scene = true
+script = ExtResource("6_a54cq")
+base_value = 200.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f3r0x"]
@@ -44,23 +79,52 @@ texture_repeat = 2
 
 [node name="Player" parent="." unique_id=825915892 instance=ExtResource("1_q3201")]
 
-[node name="StationChoppingBoard" parent="." unique_id=1926220177 groups=["stations"] instance=ExtResource("5_ydaos")]
-position = Vector2(227, -13)
-
-[node name="StationCookingPot" parent="." unique_id=916477200 groups=["stations"] instance=ExtResource("4_xh0y6")]
+[node name="StationProduction" type="Node2D" parent="." unique_id=931071811]
 position = Vector2(687, 0)
 
-[node name="StationMashedPotatoStand" parent="." unique_id=1090745131 instance=ExtResource("5_ooqe3")]
-position = Vector2(464, 88)
-items_per_interaction = SubResource("Resource_3gwmf")
-seconds_per_item = SubResource("Resource_2prus")
-money_per_item = SubResource("Resource_f3r0x")
+[node name="StationChoppingBoard" parent="StationProduction" unique_id=1926220177 groups=["stations"] instance=ExtResource("5_ydaos")]
+position = Vector2(-460, -13)
 
-[node name="StationProduceBin" parent="." unique_id=1472581706 groups=["stations"] instance=ExtResource("7_a54cq")]
-position = Vector2(179, 213)
+[node name="StationCookingPot" parent="StationProduction" unique_id=916477200 groups=["stations"] instance=ExtResource("4_xh0y6")]
+
+[node name="StationProduceBin" parent="StationProduction" unique_id=1472581706 groups=["stations"] instance=ExtResource("7_a54cq")]
+position = Vector2(-508, 213)
+
+[node name="StationIngredientGiver" parent="StationProduction" unique_id=959148533 instance=ExtResource("9_f3r0x")]
+position = Vector2(-761, -105)
+label_name = &"Mug crate"
+gives = ExtResource("10_g4usa")
+station_type = 6
+
+[node name="StationBeerKeg" parent="StationProduction" unique_id=639856104 instance=ExtResource("3_2prus")]
+position = Vector2(-619, -168)
+
+[node name="StationSales" type="Node2D" parent="." unique_id=1532802252]
+position = Vector2(464, 88)
+
+[node name="StationBeerSalesStand" parent="StationSales" unique_id=456959222 instance=ExtResource("13_jwpct")]
+position = Vector2(-592, -11)
+items_per_interaction = SubResource("Resource_jwpct")
+seconds_per_item = SubResource("Resource_drtc2")
+money_per_item = SubResource("Resource_vjm0i")
+
+[node name="StationMashedPotatoesSalesStand" parent="StationSales" unique_id=1090745131 instance=ExtResource("11_jwpct")]
+items_per_interaction = SubResource("Resource_u7pce")
+seconds_per_item = SubResource("Resource_osyuy")
+money_per_item = SubResource("Resource_bv6dm")
 
 [node name="Helper" parent="." unique_id=265917294 instance=ExtResource("8_3gwmf")]
 position = Vector2(-68, 120)
+
+[node name="FsmStateGotoStation" parent="Helper/HelperFsm" parent_id_path=PackedInt32Array(265917294, 1274066329) index="1" unique_id=300112348]
+move_speed = SubResource("Resource_wxycr")
+
+[node name="Helper2" parent="." unique_id=1112028413 instance=ExtResource("8_3gwmf")]
+position = Vector2(-68, 120)
+
+[node name="FsmStateGotoStation" parent="Helper2/HelperFsm" parent_id_path=PackedInt32Array(1112028413, 1274066329) index="1" unique_id=300112348]
+station_routes = ExtResource("12_2krsq")
+move_speed = SubResource("Resource_uewgd")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1473415961]
 navigation_polygon = SubResource("NavigationPolygon_f3r0x")
@@ -68,3 +132,6 @@ navigation_polygon = SubResource("NavigationPolygon_f3r0x")
 [node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D" unique_id=2052768716]
 position = Vector2(98, -82)
 polygon = PackedVector2Array(39, 233, 175, 100, 310, 56, 310, 141, 127, 202)
+
+[editable path="Helper"]
+[editable path="Helper2"]

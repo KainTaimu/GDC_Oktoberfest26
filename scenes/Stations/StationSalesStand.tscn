@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://skjxtphpsw1j"]
 
-[ext_resource type="Script" uid="uid://cjt1wanfdvmsp" path="res://src/Stations/StationMashedPotatoStand.gd" id="1_6phe4"]
+[ext_resource type="Script" uid="uid://cjt1wanfdvmsp" path="res://src/Stations/StationSalesStand.gd" id="1_84miu"]
 [ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_5uv32"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_ve1nr"]
 [ext_resource type="Script" uid="uid://8h5nnxqt3j1a" path="res://src/Interactable/InteractBehaviorToggle.gd" id="3_7f2ed"]
@@ -28,24 +28,24 @@ metadata/_custom_type_script = "uid://lsttcm8jal4o"
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5uv32"]
 size = Vector2(64, 64)
 
-[sub_resource type="Resource" id="Resource_xw3ci"]
+[sub_resource type="Resource" id="Resource_84miu"]
 resource_local_to_scene = true
 script = ExtResource("3_7f2ed")
 metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
 
-[node name="StationMashedPotatoStand" type="Node2D" unique_id=1090745131 groups=["stations", "stations_sell"]]
-script = ExtResource("1_6phe4")
+[node name="StationSalesStand" type="Node2D" unique_id=1090745131 node_paths=PackedStringArray("_label") groups=["stations", "stations_sell"]]
+script = ExtResource("1_84miu")
 items_per_interaction = SubResource("Resource_3gwmf")
 seconds_per_item = SubResource("Resource_ve1nr")
 money_per_item = SubResource("Resource_n1ag2")
-station_type = 3
+_label = NodePath("Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1549823168]
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_5uv32")
 
 [node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_5uv32")]
-interact_behavior = SubResource("Resource_xw3ci")
+interact_behavior = SubResource("Resource_84miu")
 
 [node name="Label" type="Label" parent="." unique_id=689880663]
 anchors_preset = 8
@@ -72,4 +72,5 @@ position = Vector2(0, -24)
 script = ExtResource("6_h2604")
 
 [connection signal="on_progress_changed" from="." to="Progress" method="set_progress"]
+[connection signal="on_sale_complete" from="." to="Progress/MoneyPopup" method="spawn_popup"]
 [connection signal="on_interacted" from="InteractionPrompt" to="." method="interact"]

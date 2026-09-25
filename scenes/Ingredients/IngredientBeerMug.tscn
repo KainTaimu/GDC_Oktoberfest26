@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cb7r4yagaljer"]
+
+[ext_resource type="Script" uid="uid://m448v2lk4o0t" path="res://src/Ingredient/Ingredient.gd" id="1_ivu2f"]
+[ext_resource type="Script" uid="uid://xuo30b64lrrc" path="res://src/Ingredient/IngredientModifierBeerPoured.gd" id="2_jxytc"]
+
+[node name="IngredientBeerMug" type="Node" unique_id=462136724 node_paths=PackedStringArray("actions_mapping")]
+script = ExtResource("1_ivu2f")
+base_ingredient_name = "Mug"
+ingredient_type = 3
+actions_mapping = {
+5: NodePath("IngredientModifierBeerPoured")
+}
+
+[node name="IngredientModifierBeerPoured" type="Node" parent="." unique_id=6679535]
+script = ExtResource("2_jxytc")
+_modifier_name = &"Beer"
+_modifier_type = 2

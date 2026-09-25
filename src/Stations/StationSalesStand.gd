@@ -1,9 +1,23 @@
-class_name StationMashedPotatoStand
+@tool
+class_name StationSalesStand
 extends AbstractStation
+
+signal on_sale_complete(earned_money: int)
+
+@export var sells_what: Ingredient.Types
+@export var label_name: StringName:
+	get:
+		return label_name
+	set(v):
+		label_name = v
+		_label.text = v
 
 @export var items_per_interaction: Stat
 @export var seconds_per_item: Stat
 @export var money_per_item: Stat
+
+@export_group("Internal")
+@export var _label: Label
 
 var quantity: int
 
@@ -23,7 +37,7 @@ func _process(delta: float) -> void:
 
 	LevelData.money += roundi(money_per_item.value)
 	t = wrapf(t - delta, 0, seconds_per_item.value)
-	quantity -= 1
+	on_sale()
 
 
 func interact() -> void:
@@ -32,8 +46,8 @@ func interact() -> void:
 	if ingredient == null:
 		CustomLogger.log_debug("cant sell: not holding anything")
 		return
-	if ingredient.base_ingredient_name != "Mashed Potatoes":
-		CustomLogger.log_debug("cant sell: held item not mashed potatoes")
+	if ingredient.ingredient_type != sells_what:
+		CustomLogger.log_debug("cant sell: held item not supported")
 		return
 	held.try_set_held_ingredient(null)
 	quantity += roundi(items_per_interaction.value)
@@ -41,3 +55,8 @@ func interact() -> void:
 
 func interact_forced() -> void:
 	quantity += roundi(items_per_interaction.value)
+
+
+func on_sale() -> void:
+	quantity -= 1
+	on_sale_complete.emit(roundi(money_per_item.value))

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://djyqyqr25dssl"]
+
+[ext_resource type="Script" uid="uid://cqs7fwebftrad" path="res://src/Stations/StationIngredientGiver.gd" id="1_6pdvh"]
+[ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_3muou"]
+[ext_resource type="Script" uid="uid://fm67ugt30l3j" path="res://src/Interactable/InteractBehaviorHold.gd" id="3_vd83v"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6bdph"]
+size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_3muou"]
+resource_local_to_scene = true
+script = ExtResource("3_vd83v")
+metadata/_custom_type_script = "uid://fm67ugt30l3j"
+
+[node name="StationIngredientGiver" type="Node2D" unique_id=959148533 node_paths=PackedStringArray("_label") groups=["stations", "stations_production"]]
+script = ExtResource("1_6pdvh")
+_label = NodePath("Label")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=858405606]
+texture_repeat = 2
+texture = SubResource("PlaceholderTexture2D_6bdph")
+
+[node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_3muou")]
+interact_behavior = SubResource("Resource_3muou")
+
+[node name="Label" type="Label" parent="." unique_id=1780100358]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -60.0
+offset_right = 49.5
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[connection signal="on_interacted" from="InteractionPrompt" to="." method="interact"]

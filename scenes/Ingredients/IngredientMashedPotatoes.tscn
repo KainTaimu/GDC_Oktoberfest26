@@ -5,3 +5,4 @@
 [node name="IngredientMashedPotatoes" type="Node" unique_id=11928422]
 script = ExtResource("1_lb676")
 base_ingredient_name = "Mashed Potatoes"
+ingredient_type = 2
