@@ -2,8 +2,36 @@
 
 [ext_resource type="PackedScene" uid="uid://d1w5ccem33kle" path="res://scenes/Player/Player.tscn" id="1_q3201"]
 [ext_resource type="Script" uid="uid://uhy8r4dnlskb" path="res://scenes/Level/StationsOrganizer.gd" id="2_drtc2"]
+[ext_resource type="PackedScene" uid="uid://dlwylg46kta1b" path="res://scenes/Stations/StationMugCrate.tscn" id="3_3gwmf"]
+[ext_resource type="PackedScene" uid="uid://dgl3t8eerkw68" path="res://scenes/Stations/StationBeerKeg.tscn" id="4_2prus"]
+[ext_resource type="PackedScene" uid="uid://cgtdaihc80pco" path="res://scenes/Stations/StationBeerSalesStand.tscn" id="5_f3r0x"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_g4usa"]
 [ext_resource type="Script" uid="uid://bg0uk35hh6ra7" path="res://src/Level/LevelDataSceneProxy.gd" id="6_ooqe3"]
 [ext_resource type="Script" uid="uid://d0wio1lgbuxyt" path="res://src/Level/HelpersOrganizer.gd" id="11_drtc2"]
+
+[sub_resource type="Resource" id="Resource_3gwmf"]
+resource_local_to_scene = true
+script = ExtResource("6_g4usa")
+base_value = 5.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_2prus"]
+resource_local_to_scene = true
+script = ExtResource("6_g4usa")
+base_value = 1.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_f3r0x"]
+resource_local_to_scene = true
+script = ExtResource("6_g4usa")
+base_value = 0.6
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
+
+[sub_resource type="Resource" id="Resource_g4usa"]
+resource_local_to_scene = true
+script = ExtResource("6_g4usa")
+base_value = 5.0
+metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f3r0x"]
 vertices = PackedVector2Array(2147.8672, -630.03906, 2130.1172, 805.8828, 418, 66.21094, 418, -39.78125, -1071.0781, 770.10156, 228.15625, 129.49219, -1082.9063, -645.9531, 267.6797, 9.21875, 124.27344, 149.46094, 228.14844, 129.47656, 132.75, 163.10156)
@@ -20,6 +48,19 @@ metadata/_edit_lock_ = true
 
 [node name="StationProduction" type="Node2D" parent="StationsOrganizer" unique_id=931071811]
 position = Vector2(687, 0)
+
+[node name="StationMugCrate" parent="StationsOrganizer/StationProduction" unique_id=959148533 instance=ExtResource("3_3gwmf")]
+position = Vector2(-811, -140)
+
+[node name="StationBeerSalesStand" parent="StationsOrganizer/StationProduction" unique_id=1090745131 instance=ExtResource("5_f3r0x")]
+position = Vector2(-629, -141)
+items_per_interaction = SubResource("Resource_3gwmf")
+items_per_interaction_helper = SubResource("Resource_2prus")
+seconds_per_item = SubResource("Resource_f3r0x")
+money_per_item = SubResource("Resource_g4usa")
+
+[node name="StationBeerKeg" parent="StationsOrganizer/StationProduction" unique_id=639856104 instance=ExtResource("4_2prus")]
+position = Vector2(-719, -240)
 
 [node name="StationSales" type="Node2D" parent="StationsOrganizer" unique_id=1532802252]
 position = Vector2(464, 88)

@@ -30,8 +30,19 @@ extends MarginContainer
 @export var _price_label: RichTextLabel
 @export var _icon: TextureRect
 @export var _held_item_scene: PackedScene = preload("uid://vojbxj0sf2cg")
+@export var _helper_path_hint: PackedScene = preload("uid://efulxxbgqdrq")
 
 var _mouse_inside: bool
+var item_scene_instance: Node
+var _helper_hint: HelperPathHint
+
+var _shake: float
+const a := 15
+const b := 90
+const E := 2.718281828459045235360287471352
+
+var col: Color = Color.WHITE
+var col_tween: Tween
 
 
 func _ready() -> void:
@@ -40,40 +51,76 @@ func _ready() -> void:
 	_price_label.set_deferred("text", "$%s" % item_price)
 
 
+func _process(delta: float) -> void:
+	_shake = max(0, _shake - delta)
+	offset_transform_rotation = (E ** (-a * (3 - _shake))) * cos(b * (3 - _shake)) * randf_range(0.2, 0.5)
+
+
 func _input(event: InputEvent) -> void:
 	if !(event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and
 			_mouse_inside and not event.is_echo()):
 		return
 	if BuyItemHeld.instance != null:
 		BuyItemHeld.instance.queue_free()
+
+	item_scene_instance = item_scene.instantiate()
 	create_buy_item_held()
+	if _helper_path_hint != null and item_scene_instance is Helper:
+		_create_helper_path_hint()
 
 
 func create_buy_item_held():
+	if LevelData.money < item_price:
+		col = Color.RED
+		if col_tween != null:
+			col_tween.kill()
+		col_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		col_tween.tween_property(self, "col", Color.WHITE, 3)
+		_shake = 3
+		return
 	var scene := _held_item_scene.instantiate() as BuyItemHeld
 	scene.global_position = get_global_mouse_position()
 	scene.on_item_placed.connect(_on_item_placed)
+	scene.icon = item_icon
 	add_child(scene)
+	LevelData.money -= item_price
+
+
+func _create_helper_path_hint():
+	var helper := item_scene_instance as Helper
+	assert(helper != null)
+
+	var state := helper.fsm.current_state as FsmStateWaitingForWork
+	if state == null:
+		return
+
+	var hint := _helper_path_hint.instantiate() as HelperPathHint
+	assert(hint != null)
+
+	hint.set_routes(state.station_routes)
+	add_child(hint)
+	_helper_hint = hint
 
 
 func _on_item_placed():
-	var scene := item_scene.instantiate()
 	# using global_position doesn't work because BuyItemHeld is in its own CanvasLayer
-	scene.global_position = get_viewport().get_camera_2d().get_global_mouse_position().snapped(Vector2.ONE * 32)
-	if scene is AbstractStation:
-		StationsOrganizer.instance.add_child(scene)
-	elif scene is Helper:
-		HelpersOrganizer.instance.add_child(scene)
+	item_scene_instance.global_position = get_viewport().get_camera_2d().get_global_mouse_position().snapped(Vector2.ONE * 32)
+	if item_scene_instance is AbstractStation:
+		StationsOrganizer.instance.add_child(item_scene_instance)
+	elif item_scene_instance is Helper:
+		HelpersOrganizer.instance.add_child(item_scene_instance)
 	else:
 		assert(false, "unexpected scene type")
-		scene.queue_free()
+		item_scene_instance.queue_free()
+		if _helper_hint != null:
+			_helper_hint.queue_free()
 
 
 func _draw() -> void:
 	var rect := get_rect()
 	rect.position = Vector2(0, 0)
 	if _mouse_inside:
-		draw_rect(rect.grow(-1), Color.WHITE, false, 1)
+		draw_rect(rect.grow(-1), col, false, 1)
 
 
 func _on_mouse_entered() -> void:

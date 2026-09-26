@@ -7,6 +7,7 @@ signal on_work_finished
 @export var _state_name: StringName = &"waiting_for_work"
 @export var work_state: FsmStateGotoStation
 @export var station_routes: RecipeRoute
+@export var owner_sprite: AnimatedSprite2D
 
 @onready var fsm_manager: HelperFsm = $".."
 
@@ -46,3 +47,9 @@ func _check_conditions() -> bool:
 
 func _sort_by_dist_sq(a: Node2D, b: Node2D) -> bool:
 	return a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position)
+
+
+func _flip_sprite():
+	if owner_sprite == null:
+		return
+	owner_sprite.flip_h = not owner_sprite.flip_h

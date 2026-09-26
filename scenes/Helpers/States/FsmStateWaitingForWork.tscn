@@ -21,6 +21,22 @@ func _ready() -> void:
 	)
 "
 
+[sub_resource type="GDScript" id="GDScript_ogoab"]
+script/source = "extends Node
+
+@export var fsm: FsmStateWaitingForWork
+@onready var owner_sprite: AnimatedSprite2D = fsm.owner_sprite
+
+var i: int
+
+func _flip_sprite():
+	if owner_sprite == null:
+		return
+	i = wrapi(i + 1, 0, 3)
+	if i == 0:
+		owner_sprite.flip_h = not owner_sprite.flip_h
+"
+
 [node name="FsmStateWaitingForWork" type="Node2D" unique_id=114355789]
 script = ExtResource("1_wphgn")
 state = 3
@@ -47,6 +63,11 @@ wait_time = 0.5
 autostart = true
 script = SubResource("GDScript_yilvy")
 
+[node name="SpriteFlipper" type="Node" parent="." unique_id=1895616031 node_paths=PackedStringArray("fsm")]
+script = SubResource("GDScript_ogoab")
+fsm = NodePath("..")
+
 [connection signal="on_work_finished" from="." to="Label" method="hide"]
 [connection signal="on_work_started" from="." to="Label" method="show"]
 [connection signal="timeout" from="Label/Timer" to="Label" method="_on_timer_timeout"]
+[connection signal="timeout" from="Label/Timer" to="SpriteFlipper" method="_flip_sprite"]

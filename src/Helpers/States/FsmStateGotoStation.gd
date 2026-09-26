@@ -14,6 +14,7 @@ var queued_interaction: AbstractStation
 
 func _ready() -> void:
 	navigation_agent = NavigationAgent2D.new()
+	navigation_agent.avoidance_enabled = true
 	navigation_agent.velocity_computed.connect(_on_velocity_computed)
 	add_child(navigation_agent)
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 func _on_velocity_computed(safe_velocity: Vector2):
 	owner_node.velocity = safe_velocity
 	owner_node.move_and_slide()
+	owner_node.sprite.flip_h = owner_node.velocity.x < 0
 
 
 func start() -> void:

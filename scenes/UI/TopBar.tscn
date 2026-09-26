@@ -17,6 +17,7 @@ func _ready() -> void:
 "
 
 [node name="TopBar" type="CanvasLayer" unique_id=267657025]
+visible = false
 script = SubResource("GDScript_puxyr")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=568865047]
@@ -38,6 +39,7 @@ layout_mode = 2
 [node name="MoneyDisplay" type="RichTextLabel" parent="PanelContainer/MarginContainer/HSplitContainer" unique_id=848516366]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "$XXX"
 fit_content = true

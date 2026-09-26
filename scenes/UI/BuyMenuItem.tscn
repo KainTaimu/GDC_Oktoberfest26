@@ -10,6 +10,7 @@ custom_minimum_size = Vector2(176, 176)
 custom_maximum_size = Vector2(176, 176)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+offset_transform_enabled = true
 mouse_default_cursor_shape = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 8
@@ -22,6 +23,7 @@ item_icon = SubResource("PlaceholderTexture2D_do71q")
 _name_label = NodePath("VBoxContainer/Name")
 _price_label = NodePath("VBoxContainer/Price")
 _icon = NodePath("VBoxContainer/TextureRect")
+_helper_path_hint = null
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1731885351]
 layout_mode = 2

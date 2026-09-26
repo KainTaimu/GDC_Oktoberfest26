@@ -6,4 +6,10 @@ func _ready() -> void:
 
 
 func update():
-	text = "$%s" % LevelData.money
+	text = "$%s" % format_number(LevelData.money, ",")
+
+
+static func format_number(number: int, c: String) -> String:
+	var regex := RegEx.new()
+	regex.compile("(\\d)(?=(\\d{3})+(?!\\d))")
+	return regex.sub(str(number), "$1%s" % c, true)

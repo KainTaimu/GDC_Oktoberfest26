@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://ch7esu5ho720d"]
+
+[ext_resource type="FontFile" uid="uid://bcmtx2bgsh8av" path="res://assets/Fonts/Munro-2LYe.ttf" id="1_5p3eo"]
+
+[resource]
+default_font = ExtResource("1_5p3eo")
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)

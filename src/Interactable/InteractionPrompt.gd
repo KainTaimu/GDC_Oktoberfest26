@@ -20,7 +20,10 @@ var progress: float:
 	get:
 		return progress
 	set(v):
+		var old := progress
 		progress = clampf(v, 0, 1)
+		if is_equal_approx(old, progress):
+			return
 		queue_redraw()
 @export var progress_radius: float = 32:
 	get:
@@ -48,13 +51,20 @@ var progress: float:
 		_show_hints = v
 		queue_redraw()
 
-var _color: Color = Color.TRANSPARENT
+var _color: Color = Color.TRANSPARENT:
+	get:
+		return _color
+	set(v):
+		_color = v
+		queue_redraw()
 var _mouse_in_area: bool
 var _interaction_cooldown: float:
 	get:
 		return _interaction_cooldown
 	set(v):
 		_interaction_cooldown = max(0, v)
+
+var tween: Tween
 
 
 func _process(delta: float) -> void:
@@ -103,18 +113,23 @@ func _draw() -> void:
 
 
 func interact():
+	if interact_behavior == null:
+		return
 	interact_behavior.on_press()
 
 
 func _show_progress():
-	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(self, "_color", progress_color, show_time)
 	_mouse_in_area = true
 
 
 func _hide_progress():
-	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween.set_parallel(true)
 	tween.tween_property(self, "_color", Color.TRANSPARENT, show_time)
+	tween.tween_callback(_reset_progress)
+	tween.set_parallel(false)
 	_mouse_in_area = false
 
 
@@ -124,12 +139,12 @@ func _on_interacted() -> void:
 
 
 func _reset():
-	var tween := create_tween().set_ease(Tween.EASE_OUT)
+	tween = create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "_color", Color.TRANSPARENT, show_time)
 	tween.tween_callback(_reset_progress)
 	_mouse_in_area = false
 
 
 func _reset_progress():
-	progress = 0
+	progress = 0.0
 	interact_behavior.reset()

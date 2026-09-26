@@ -1,12 +1,23 @@
+@tool
 class_name BuyItemHeld
 extends Node2D
 
 signal on_item_placed
 
+@export var item_icon: TextureRect
+
 static var instance: BuyItemHeld
+var icon: Texture2D:
+	get:
+		return icon
+	set(v):
+		icon = v
+		item_icon.texture = v
 
 
 func _input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
 	if event is InputEventMouseMotion:
 		var motion := event as InputEventMouseMotion
 		assert(motion != null)
@@ -33,10 +44,14 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	if BuyItemHeld.instance != null:
 		BuyItemHeld.instance.queue_free()
 	BuyItemHeld.instance = self
 
 
 func _exit_tree() -> void:
+	if Engine.is_editor_hint():
+		return
 	BuyItemHeld.instance = null

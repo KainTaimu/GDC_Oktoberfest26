@@ -17,8 +17,6 @@ monitorable = false
 shape = SubResource("CircleShape2D_ogoab")
 debug_color = Color(0.37495068, 0.37495068, 0.37495068, 0)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1425386011]
-
 [connection signal="on_interacted" from="." to="." method="_on_interacted"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_show_progress"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_hide_progress"]

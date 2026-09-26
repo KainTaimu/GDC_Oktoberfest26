@@ -56,14 +56,16 @@ script/source = "extends AnimatedSprite2D
 
 @export var cbody: CharacterBody2D
 
-func _process(_delta: float) -> void:
-	if Engine.get_process_frames() % 30:
-		flip_h = cbody.velocity.x < 0
+#func _process(_delta: float) -> void:
+	#if Engine.get_process_frames() % 30:
+		#flip_h = cbody.velocity.x < 0
 "
 
-[node name="Helper" type="CharacterBody2D" unique_id=265917294 groups=["helpers"]]
+[node name="Helper" type="CharacterBody2D" unique_id=265917294 node_paths=PackedStringArray("fsm", "sprite") groups=["helpers"]]
 script = ExtResource("1_rgd1u")
 move_speed = SubResource("Resource_rsfvd")
+fsm = NodePath("HelperFsm")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=731935237]
 shape = SubResource("CircleShape2D_kbwam")

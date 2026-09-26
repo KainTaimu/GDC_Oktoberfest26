@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://cqb82hkte2h2v" path="res://src/Stations/StationChoppingBoard.gd" id="1_mmded"]
 [ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_pn2mv"]
 [ext_resource type="Script" uid="uid://fm67ugt30l3j" path="res://src/Interactable/InteractBehaviorHold.gd" id="3_0cs76"]
+[ext_resource type="Theme" uid="uid://ch7esu5ho720d" path="res://resources/Themes/StationLabel.tres" id="4_2j6ku"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c3mkr"]
 size = Vector2(64, 64)
 
-[sub_resource type="Resource" id="Resource_c3mkr"]
+[sub_resource type="Resource" id="Resource_x72c5"]
 resource_local_to_scene = true
 script = ExtResource("3_0cs76")
 metadata/_custom_type_script = "uid://fm67ugt30l3j"
@@ -24,7 +25,7 @@ texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_c3mkr")
 
 [node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_pn2mv")]
-interact_behavior = SubResource("Resource_c3mkr")
+interact_behavior = SubResource("Resource_x72c5")
 
 [node name="Label" type="Label" parent="." unique_id=1247641211]
 custom_maximum_size = Vector2(64, -1)
@@ -39,6 +40,7 @@ offset_right = 32.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_2j6ku")
 text = "Chopping Board"
 horizontal_alignment = 1
 autowrap_mode = 2

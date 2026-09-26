@@ -13,6 +13,7 @@ config_version=5
 config/name="New Game Project"
 run/main_scene="uid://ci37mmq6y6stu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -26,7 +27,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=4
 window/size/resizable=false
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
 [dotnet]
@@ -47,6 +48,8 @@ helpers=""
 
 [gui]
 
+theme/default_font_antialiasing=0
+theme/default_font_generate_mipmaps=true
 theme/custom_font="uid://bcmtx2bgsh8av"
 
 [input]

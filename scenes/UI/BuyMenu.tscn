@@ -35,7 +35,7 @@ corner_radius_top_right = 4
 atlas = ExtResource("10_ny8eh")
 region = Rect2(0, 0, 31, 31)
 
-[node name="BuyMenu" type="CanvasLayer" unique_id=1245596724 node_paths=PackedStringArray("_body", "_main_panel", "_close_button_label")]
+[node name="BuyMenu" type="CanvasLayer" unique_id=1042613914 node_paths=PackedStringArray("_body", "_main_panel", "_close_button_label")]
 visible = false
 script = ExtResource("1_cuija")
 _body = NodePath("VBoxContainer")
@@ -89,6 +89,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Mug crate" parent="VBoxContainer/MainPanel/TabContainer/Beer/GridContainer" unique_id=1794215336 instance=ExtResource("2_v4cm6")]
+layout_mode = 2
+item_name = &"Mug crate"
+item_price = 15
+item_scene = ExtResource("5_m21y0")
+
 [node name="Beer keg" parent="VBoxContainer/MainPanel/TabContainer/Beer/GridContainer" unique_id=450447786 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
 item_name = &"Beer keg"
@@ -100,12 +106,6 @@ layout_mode = 2
 item_name = &"Beer stand"
 item_price = 50
 item_scene = ExtResource("3_t03ra")
-
-[node name="Mug crate" parent="VBoxContainer/MainPanel/TabContainer/Beer/GridContainer" unique_id=1794215336 instance=ExtResource("2_v4cm6")]
-layout_mode = 2
-item_name = &"Mug crate"
-item_price = 15
-item_scene = ExtResource("5_m21y0")
 
 [node name="Mashed Potatoes" type="ScrollContainer" parent="VBoxContainer/MainPanel/TabContainer" unique_id=988308786]
 visible = false
@@ -154,14 +154,14 @@ size_flags_vertical = 3
 [node name="Beer helper" parent="VBoxContainer/MainPanel/TabContainer/Helpers/GridContainer" unique_id=1035564733 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
 item_name = &"Beer helper"
-item_price = 15
+item_price = 300
 item_icon = SubResource("AtlasTexture_ny8eh")
 item_scene = ExtResource("10_cmq1h")
 
 [node name="M_Potatoes helper" parent="VBoxContainer/MainPanel/TabContainer/Helpers/GridContainer" unique_id=8269722 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
 item_name = &"M.Potatoes helper"
-item_price = 15
+item_price = 450
 item_icon = SubResource("AtlasTexture_ny8eh")
 item_scene = ExtResource("10_bscqc")
 

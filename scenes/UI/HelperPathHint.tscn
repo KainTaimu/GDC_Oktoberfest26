@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://efulxxbgqdrq"]
+
+[ext_resource type="Script" uid="uid://pycf4t6jqpau" path="res://src/UI/HelperPathHint.gd" id="1_v70d3"]
+[ext_resource type="Script" uid="uid://bs5bnootgs6xr" path="res://src/UI/HelperPathHintDrawer.gd" id="2_47n4w"]
+[ext_resource type="Resource" uid="uid://nb42gd0bqfwj" path="res://resources/RecipeRoutes/BeerRoute.tres" id="2_slec4"]
+
+[node name="HelperPathHint" type="CanvasLayer" unique_id=1194585351 node_paths=PackedStringArray("drawer")]
+script = ExtResource("1_v70d3")
+drawer = NodePath("HelperPathHintDrawer")
+
+[node name="HelperPathHintDrawer" type="Node2D" parent="." unique_id=1408404171]
+script = ExtResource("2_47n4w")
+routes = ExtResource("2_slec4")

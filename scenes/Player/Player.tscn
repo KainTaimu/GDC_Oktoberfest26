@@ -16,7 +16,7 @@ radius = 16.03122
 [sub_resource type="Resource" id="Resource_ved6o"]
 resource_local_to_scene = true
 script = ExtResource("3_ved6o")
-base_value = 600.0
+base_value = 250.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_socpp"]
@@ -105,12 +105,10 @@ autoplay = "default"
 frame_progress = 0.8709986
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=713256097]
+zoom = Vector2(1.2, 1.2)
 
 [node name="TopBar" parent="." unique_id=267657025 instance=ExtResource("6_socpp")]
-visible = false
 
 [node name="Inventory" parent="." unique_id=24067664 instance=ExtResource("9_mmokv")]
-visible = false
 
 [node name="BuyMenu" parent="." unique_id=1245596724 instance=ExtResource("9_dqp0f")]
-visible = false
