@@ -32,8 +32,9 @@ func _ready() -> void:
 	tween.tween_method(c, 0.0, 1.0, fade_in_time)
 "
 
-[node name="NpcCustomer" unique_id=265917294 instance=ExtResource("1_li5wx")]
+[node name="NpcCustomer" unique_id=265917294 groups=["customers"] instance=ExtResource("1_li5wx")]
 material = SubResource("ShaderMaterial_e42uu")
+collision_layer = 11
 move_speed = SubResource("Resource_or31s")
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=834254190]

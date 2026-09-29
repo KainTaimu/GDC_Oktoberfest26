@@ -2,27 +2,43 @@
 
 [ext_resource type="PackedScene" uid="uid://ccsw34iu1ba5g" path="res://scenes/Npc/Npc.tscn" id="1_583y4"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_ygx0i"]
+[ext_resource type="Material" uid="uid://bbw3cbq1dudt" path="res://resources/new_shader_material.tres" id="3_3stqb"]
 [ext_resource type="PackedScene" uid="uid://dd0f5tmh2jud1" path="res://scenes/Npc/States/FsmStateGotoStation.tscn" id="3_r0gae"]
 [ext_resource type="Resource" uid="uid://bo8b2ok02yc4t" path="res://resources/RecipeRoutes/MashedPotatoes.tres" id="4_ik2r8"]
 [ext_resource type="PackedScene" uid="uid://c4thhlcvkal7x" path="res://scenes/Npc/States/FsmStateWaitingForWork.tscn" id="5_ik2r8"]
+[ext_resource type="PackedScene" uid="uid://bl6o3ssbjdnox" path="res://scenes/Npc/HelperPicker.tscn" id="7_stf0a"]
 
-[sub_resource type="Resource" id="Resource_ik2r8"]
+[sub_resource type="Resource" id="Resource_stf0a"]
 resource_local_to_scene = true
 script = ExtResource("2_ygx0i")
-base_value = 200.0
+base_value = 100.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[node name="HelperMPotatoes" unique_id=265917294 instance=ExtResource("1_583y4")]
-move_speed = SubResource("Resource_ik2r8")
+[node name="HelperMPotatoes" unique_id=265917294 groups=["helpers"] instance=ExtResource("1_583y4")]
+collision_layer = 7
+collision_mask = 32768
+input_pickable = true
+move_speed = SubResource("Resource_stf0a")
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=834254190]
+material = ExtResource("3_3stqb")
 
 [node name="HelperFsm" parent="." index="2" unique_id=1274066329 node_paths=PackedStringArray("current_state")]
 current_state = NodePath("FsmStateWaitingForWork")
+
+[node name="FsmStateIdle" parent="HelperFsm" index="0" unique_id=210564790 node_paths=PackedStringArray("owner_node")]
+owner_node = NodePath("../..")
 
 [node name="FsmStateGotoStation" parent="HelperFsm" index="1" unique_id=236485522 node_paths=PackedStringArray("owner_node") instance=ExtResource("3_r0gae")]
 owner_node = NodePath("../..")
 station_routes = ExtResource("4_ik2r8")
 
-[node name="FsmStateWaitingForWork" parent="HelperFsm" index="2" unique_id=114355789 node_paths=PackedStringArray("work_state", "owner_sprite") instance=ExtResource("5_ik2r8")]
-work_state = NodePath("../FsmStateGotoStation")
+[node name="FsmStateWaitingForWork" parent="HelperFsm" index="2" unique_id=114355789 node_paths=PackedStringArray("owner_sprite") instance=ExtResource("5_ik2r8")]
 station_routes = ExtResource("4_ik2r8")
 owner_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="HelperPicker" parent="." index="3" unique_id=1470880187 node_paths=PackedStringArray("fsm") instance=ExtResource("7_stf0a")]
+fsm = NodePath("../HelperFsm")
+
+[connection signal="mouse_entered" from="." to="HelperPicker" method="_mouse_entered"]
+[connection signal="mouse_exited" from="." to="HelperPicker" method="_mouse_exited"]

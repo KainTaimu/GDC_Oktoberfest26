@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://uhy8r4dnlskb" path="res://scenes/Level/StationsOrganizer.gd" id="2_drtc2"]
 [ext_resource type="PackedScene" uid="uid://dlwylg46kta1b" path="res://scenes/Stations/StationMugCrate.tscn" id="3_3gwmf"]
 [ext_resource type="PackedScene" uid="uid://dgl3t8eerkw68" path="res://scenes/Stations/StationBeerKeg.tscn" id="4_2prus"]
+[ext_resource type="PackedScene" uid="uid://bm2nrn0q1j648" path="res://scenes/Npc/NpcHelperBeer.tscn" id="4_3gwmf"]
 [ext_resource type="PackedScene" uid="uid://cgtdaihc80pco" path="res://scenes/Stations/StationBeerSalesStand.tscn" id="5_f3r0x"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_g4usa"]
 [ext_resource type="Script" uid="uid://bg0uk35hh6ra7" path="res://src/Level/LevelDataSceneProxy.gd" id="6_ooqe3"]
@@ -11,28 +12,22 @@
 [ext_resource type="Script" uid="uid://c3fadcv8s72u0" path="res://src/Level/CustomerSpawner.gd" id="9_f3r0x"]
 [ext_resource type="Script" uid="uid://d0wio1lgbuxyt" path="res://src/Level/HelpersOrganizer.gd" id="11_drtc2"]
 
-[sub_resource type="Resource" id="Resource_f3r0x"]
-resource_local_to_scene = true
-script = ExtResource("6_g4usa")
-base_value = 5.0
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
-
 [sub_resource type="Resource" id="Resource_g4usa"]
 resource_local_to_scene = true
 script = ExtResource("6_g4usa")
-base_value = 1.0
+base_value = 10.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="Resource" id="Resource_2krsq"]
 resource_local_to_scene = true
 script = ExtResource("6_g4usa")
-base_value = 0.6
+base_value = 2.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="Resource" id="Resource_jwpct"]
 resource_local_to_scene = true
 script = ExtResource("6_g4usa")
-base_value = 5.0
+base_value = 0.6
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="Resource" id="Resource_drtc2"]
@@ -44,25 +39,7 @@ metadata/_custom_type_script = "uid://lsttcm8jal4o"
 [sub_resource type="Resource" id="Resource_vjm0i"]
 resource_local_to_scene = true
 script = ExtResource("6_g4usa")
-base_value = 1.0
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
-
-[sub_resource type="Resource" id="Resource_u7pce"]
-resource_local_to_scene = true
-script = ExtResource("6_g4usa")
-base_value = 0.6
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
-
-[sub_resource type="Resource" id="Resource_osyuy"]
-resource_local_to_scene = true
-script = ExtResource("6_g4usa")
-base_value = 5.0
-metadata/_custom_type_script = "uid://lsttcm8jal4o"
-
-[sub_resource type="Resource" id="Resource_bv6dm"]
-resource_local_to_scene = true
-script = ExtResource("6_g4usa")
-base_value = 200.0
+base_value = 110.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f3r0x"]
@@ -81,25 +58,18 @@ metadata/_edit_lock_ = true
 [node name="StationProduction" type="Node2D" parent="StationsOrganizer" unique_id=931071811]
 position = Vector2(687, 0)
 
-[node name="StationMugCrate" parent="StationsOrganizer/StationProduction" unique_id=959148533 instance=ExtResource("3_3gwmf")]
-position = Vector2(-811, -140)
+[node name="StationBeerKeg" parent="StationsOrganizer/StationProduction" unique_id=639856104 instance=ExtResource("4_2prus")]
+position = Vector2(-678, -153)
 
 [node name="StationBeerSalesStand" parent="StationsOrganizer/StationProduction" unique_id=1090745131 instance=ExtResource("5_f3r0x")]
-position = Vector2(-629, -141)
-items_per_interaction = SubResource("Resource_f3r0x")
-items_per_interaction_helper = SubResource("Resource_g4usa")
-seconds_per_item = SubResource("Resource_2krsq")
-money_per_item = SubResource("Resource_jwpct")
+position = Vector2(-601, -150)
+items_per_interaction = SubResource("Resource_g4usa")
+items_per_interaction_helper = SubResource("Resource_2krsq")
+seconds_per_item = SubResource("Resource_jwpct")
+money_per_item = SubResource("Resource_drtc2")
 
-[node name="StationBeerSalesStand2" parent="StationsOrganizer/StationProduction" unique_id=1347294911 instance=ExtResource("5_f3r0x")]
-position = Vector2(-301, -143)
-items_per_interaction = SubResource("Resource_drtc2")
-items_per_interaction_helper = SubResource("Resource_vjm0i")
-seconds_per_item = SubResource("Resource_u7pce")
-money_per_item = SubResource("Resource_osyuy")
-
-[node name="StationBeerKeg" parent="StationsOrganizer/StationProduction" unique_id=639856104 instance=ExtResource("4_2prus")]
-position = Vector2(-719, -240)
+[node name="StationMugCrate" parent="StationsOrganizer/StationProduction" unique_id=959148533 instance=ExtResource("3_3gwmf")]
+position = Vector2(-506, -161)
 
 [node name="StationSales" type="Node2D" parent="StationsOrganizer" unique_id=1532802252]
 position = Vector2(464, 88)
@@ -107,13 +77,15 @@ position = Vector2(464, 88)
 [node name="HelpersOrganizer" type="Node2D" parent="." unique_id=1026044528]
 script = ExtResource("11_drtc2")
 
-[node name="NpcCustomer" parent="HelpersOrganizer" unique_id=265917294 instance=ExtResource("8_2prus")]
-move_speed = SubResource("Resource_bv6dm")
+[node name="NpcHelperBeer" parent="HelpersOrganizer" unique_id=265917294 instance=ExtResource("4_3gwmf")]
+move_speed = SubResource("Resource_vjm0i")
 
 [node name="CustomerSpawner" type="Node" parent="." unique_id=936692570]
 script = ExtResource("9_f3r0x")
-time_between_spawns = 0.5
+time_between_spawns = 0.1
+spawn_margin = -100.0
 npc_scenes = Array[PackedScene]([ExtResource("8_2prus")])
+max_customers_at_once = 75
 
 [node name="LevelDataSceneProxy" type="Node" parent="." unique_id=1774999268]
 script = ExtResource("6_ooqe3")

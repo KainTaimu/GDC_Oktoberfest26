@@ -29,9 +29,6 @@ func _input(event: InputEvent) -> void:
 		assert(button != null)
 		if !button.is_pressed():
 			return
-		if button.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
-			queue_free()
-			return
 		if button.button_index != MouseButton.MOUSE_BUTTON_LEFT:
 			return
 		on_item_placed.emit()

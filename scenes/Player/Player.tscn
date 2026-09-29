@@ -57,7 +57,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=1625036403 node_paths=PackedStringArray("held_ingredient")]
 z_index = 256
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_ky53y")
 held_ingredient = NodePath("PlayerHeldIngredient")
 
@@ -110,5 +110,6 @@ zoom = Vector2(1.2, 1.2)
 [node name="TopBar" parent="." unique_id=267657025 instance=ExtResource("6_socpp")]
 
 [node name="Inventory" parent="." unique_id=24067664 instance=ExtResource("9_mmokv")]
+visible = false
 
 [node name="BuyMenu" parent="." unique_id=1245596724 instance=ExtResource("9_dqp0f")]

@@ -18,14 +18,14 @@ func _physics_process(delta: float) -> void:
 
 
 func transition(new_state: AbstractFsmState.States) -> void:
-	CustomLogger.log_debug(
-		"npc %s<%s> fsm transitioning from \"%s\" to \"%s\"" % [
-			target.name,
-			get_instance_id(),
-			AbstractFsmState.STATE_NAMES[current_state.state],
-			AbstractFsmState.STATE_NAMES[new_state],
-		],
-	)
+	# CustomLogger.log_debug(
+	# 	"npc %s<%s> fsm transitioning from \"%s\" to \"%s\"" % [
+	# 		target.name,
+	# 		get_instance_id(),
+	# 		AbstractFsmState.STATE_NAMES[current_state.state],
+	# 		AbstractFsmState.STATE_NAMES[new_state],
+	# 	],
+	# )
 	if current_state != null:
 		current_state.end()
 

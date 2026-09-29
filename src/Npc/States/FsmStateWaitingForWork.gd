@@ -5,7 +5,6 @@ signal on_work_started
 signal on_work_finished
 
 @export var _state_name: StringName = &"waiting_for_work"
-@export var work_state: FsmStateGotoStation
 @export var station_routes: RecipeRoute
 @export var owner_sprite: AnimatedSprite2D
 

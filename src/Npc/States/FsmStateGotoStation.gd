@@ -4,21 +4,13 @@ extends AbstractFsmState
 @export var _state_name: StringName = &"goto_station"
 @export var owner_node: Npc
 @export var station_routes: RecipeRoute
-@export var max_station_distance: float = 500
+static var max_station_distance: float = 200
 
 @onready var fsm_manager: NpcFsm = $".."
 
 var navigation_agent: NavigationAgent2D
 var station_idx: int
 var current_station: StationSalesStand
-
-
-func _ready() -> void:
-	navigation_agent = NavigationAgent2D.new()
-	navigation_agent.avoidance_enabled = true
-	navigation_agent.velocity_computed.connect(_on_velocity_computed)
-	add_child(navigation_agent)
-	navigation_agent.process_mode = ProcessMode.PROCESS_MODE_DISABLED
 
 
 func _on_velocity_computed(safe_velocity: Vector2):
@@ -28,14 +20,25 @@ func _on_velocity_computed(safe_velocity: Vector2):
 
 
 func start() -> void:
+	navigation_agent = NavigationAgent2D.new()
+	navigation_agent.avoidance_enabled = true
+	navigation_agent.avoidance_layers = 0b10
+	navigation_agent.avoidance_mask = 0b10
+	navigation_agent.velocity_computed.connect(_on_velocity_computed)
+	add_child(navigation_agent)
+
 	station_idx = 0
 	var closest := _get_closest_station(station_routes.get_station(station_idx))
+	if closest == null:
+		fsm_manager.transition(States.WAITING_FOR_WORK)
+		return
+
 	navigation_agent.set_target_position(closest.global_position)
-	navigation_agent.process_mode = ProcessMode.PROCESS_MODE_INHERIT
 
 
 func end() -> void:
-	navigation_agent.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	navigation_agent.queue_free()
+	owner_node.velocity = Vector2.ZERO
 
 
 func process(_delta: float):

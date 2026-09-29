@@ -4,11 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_pe2t1"]
 [ext_resource type="Script" uid="uid://8h5nnxqt3j1a" path="res://src/Interactable/InteractBehaviorToggle.gd" id="3_x2kok"]
 [ext_resource type="Theme" uid="uid://ch7esu5ho720d" path="res://resources/Themes/StationLabel.tres" id="4_x2kok"]
+[ext_resource type="Script" uid="uid://dlv4rgqtynx2w" path="res://src/Stations/StationSpawnPopup.gd" id="5_1d84a"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wwupi"]
 size = Vector2(64, 64)
 
-[sub_resource type="Resource" id="Resource_1d84a"]
+[sub_resource type="Resource" id="Resource_s68n3"]
 resource_local_to_scene = true
 script = ExtResource("3_x2kok")
 metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
@@ -22,7 +23,7 @@ texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_wwupi")
 
 [node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_pe2t1")]
-interact_behavior = SubResource("Resource_1d84a")
+interact_behavior = SubResource("Resource_s68n3")
 
 [node name="Label" type="Label" parent="." unique_id=2008593350]
 custom_maximum_size = Vector2(64, -1)
@@ -41,5 +42,8 @@ theme = ExtResource("4_x2kok")
 text = "Cooking pot"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="StationSpawnPopup" type="Node" parent="." unique_id=188738559]
+script = ExtResource("5_1d84a")
 
 [connection signal="on_interacted" from="InteractionPrompt" to="." method="interact"]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bl6o3ssbjdnox"]
+
+[ext_resource type="Script" uid="uid://b0nb48ejysm2j" path="res://src/Npc/HelperPicker.gd" id="1_cautk"]
+[ext_resource type="FontFile" uid="uid://b1dxvp7tetl0s" path="res://assets/Fonts/MunroSmall-wPZw.ttf" id="2_1b8xf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_do71q"]
+font = ExtResource("2_1b8xf")
+
+[node name="HelperPicker" type="Node2D" unique_id=1470880187 node_paths=PackedStringArray("_help_lbl")]
+script = ExtResource("1_cautk")
+_help_lbl = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=1860121625]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.5
+offset_top = -9.5
+offset_right = 119.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "All stations must be within this circle"
+label_settings = SubResource("LabelSettings_do71q")
+horizontal_alignment = 1
+vertical_alignment = 1

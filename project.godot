@@ -45,6 +45,7 @@ stations=""
 stations_sell="stations that sell something for $"
 stations_production="stations that can do something to an ingredient"
 helpers=""
+customers=""
 
 [gui]
 
@@ -87,7 +88,9 @@ DEBUG_EXIT_GAME={
 [layer_names]
 
 2d_physics/layer_1="All"
-2d_physics/layer_2="PlayerContact"
+2d_physics/layer_2="Npc"
+2d_physics/layer_3="Helper"
+2d_physics/layer_4="Customer"
 
 [physics]
 

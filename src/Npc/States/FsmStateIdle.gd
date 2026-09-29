@@ -2,6 +2,7 @@ class_name FsmStateIdle
 extends AbstractFsmState
 
 @export var _state_name: StringName = &"idle"
+@export var owner_node: CharacterBody2D
 
 
 func start() -> void:
@@ -13,6 +14,7 @@ func end() -> void:
 
 
 func process(_delta: float):
+	print(owner_node.velocity)
 	pass
 
 

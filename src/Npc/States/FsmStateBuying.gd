@@ -15,6 +15,8 @@ var current_target: AbstractStation
 func _ready() -> void:
 	navigation_agent = NavigationAgent2D.new()
 	navigation_agent.avoidance_enabled = true
+	navigation_agent.avoidance_layers = 0b1
+	navigation_agent.avoidance_mask = 0b1
 	navigation_agent.velocity_computed.connect(_on_velocity_computed)
 	add_child(navigation_agent)
 	navigation_agent.process_mode = ProcessMode.PROCESS_MODE_DISABLED

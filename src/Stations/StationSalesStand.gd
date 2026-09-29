@@ -27,15 +27,11 @@ var t: float
 
 func _process(delta: float) -> void:
 	t = max(0, t - delta)
-	if quantity <= 0 || quantity <= 0:
-		return
-
 	if not is_zero_approx(seconds_per_item.value):
 		on_progress_changed.emit(t / seconds_per_item.value)
-	if t > 0:
-		return
 
-	# on_sale()
+	if quantity <= 0 || quantity <= 0:
+		return
 
 
 func interact() -> void:

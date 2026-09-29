@@ -2,11 +2,13 @@ extends Node
 
 @export var enabled: bool = true
 @export var time_between_spawns: float = 1.0
-@export var margin: float = 0
+@export var spawn_margin: float = 0
 @export var npc_scenes: Array[PackedScene] = []
+@export var max_customers_at_once: int = 50
 @export_category("Internal")
 
 @onready var _timer: Timer = Timer.new()
+@onready var _tree: SceneTree = get_tree()
 
 
 func _ready() -> void:
@@ -17,6 +19,14 @@ func _ready() -> void:
 
 
 func _on_spawn_timer_timeout():
+	if _tree.get_node_count_in_group("stations_sell") == 0:
+		return
+	if _tree.get_node_count_in_group("customers") > max_customers_at_once:
+		return
+	spawn()
+
+
+func spawn():
 	if len(npc_scenes) == 0:
 		return
 	var scene := npc_scenes.pick_random() as PackedScene
@@ -24,21 +34,43 @@ func _on_spawn_timer_timeout():
 	var npc := scene.instantiate() as Npc
 	assert(npc != null, "expected npc to be of type Npc")
 
-	var pos: Vector2
-	var i := randi() % 4 # N W E S
-	var size := get_viewport().get_visible_rect().size
-	var rand_x := randf_range(0, size.x)
-	var rand_y := randf_range(0, size.y)
-	match i:
-		0: # N
-			pos = Vector2(rand_x, -margin)
-		1: # W
-			pos = Vector2(-margin, rand_y)
-		2: # E
-			pos = Vector2(size.x + margin, rand_y)
-		3: # S
-			pos = Vector2(rand_x, size.y + margin)
-
-	npc.global_position = pos - LevelData.main_player.global_position
+	npc.global_position = get_position_outside_viewport(spawn_margin)
 
 	HelpersOrganizer.instance.add_child(npc)
+
+
+static func get_position_outside_viewport(
+		margin: float = 0,
+		follow_viewport_scale: bool = true,
+) -> Vector2:
+	var camera := LevelData.main_player.get_viewport().get_camera_2d()
+	var center := camera.get_screen_center_position()
+	var size := camera.get_viewport_rect().size
+	if follow_viewport_scale:
+		size /= camera.zoom
+
+	var edge := randi() % 4
+	match edge:
+		0:
+			return Vector2(
+				randf_range(center.x - size.x - margin, center.x + size.x + margin),
+				center.y - size.y - margin,
+			)
+		1:
+			return Vector2(
+				randf_range(center.x - size.x - margin, center.x + size.x + margin),
+				center.y + size.y + margin,
+			)
+		2:
+			return Vector2(
+				center.x - size.x - margin,
+				randf_range(center.y - size.y - margin, center.y + size.y + margin),
+			)
+		3:
+			return Vector2(
+				center.x + size.x + margin,
+				randf_range(center.y - size.y - margin, center.y + size.y + margin),
+			)
+		_:
+			assert(false, "selected edge is unsupported")
+			return Vector2.ZERO
