@@ -2,14 +2,9 @@ class_name HelperPathHintDrawer
 extends Node2D
 
 @export var routes: RecipeRoute
+
 var enabled: bool
 var paths: Array[Vector2] = []
-
-
-func set_routes(r: RecipeRoute) -> void:
-	enabled = r != null
-	process_mode = PROCESS_MODE_INHERIT if enabled else PROCESS_MODE_DISABLED
-	routes = r
 
 
 func _input(_event: InputEvent) -> void:
@@ -49,3 +44,9 @@ func _draw() -> void:
 	if len(paths) <= 2:
 		return
 	draw_polyline(paths, Color.GREEN, 1.5)
+
+
+func set_routes(r: RecipeRoute) -> void:
+	enabled = r != null
+	process_mode = PROCESS_MODE_INHERIT if enabled else PROCESS_MODE_DISABLED
+	routes = r

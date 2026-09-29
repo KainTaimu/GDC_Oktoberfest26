@@ -4,15 +4,30 @@ extends Node2D
 
 signal on_item_placed
 
+static var instance: BuyItemHeld
+
 @export var item_icon: TextureRect
 
-static var instance: BuyItemHeld
 var icon: Texture2D:
 	get:
 		return icon
 	set(v):
 		icon = v
 		item_icon.texture = v
+
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	if BuyItemHeld.instance != null:
+		BuyItemHeld.instance.queue_free()
+	BuyItemHeld.instance = self
+
+
+func _exit_tree() -> void:
+	if Engine.is_editor_hint():
+		return
+	BuyItemHeld.instance = null
 
 
 func _input(event: InputEvent) -> void:
@@ -38,17 +53,3 @@ func _input(event: InputEvent) -> void:
 		if not event.is_action_pressed("ui_cancel"):
 			return
 		queue_free()
-
-
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-	if BuyItemHeld.instance != null:
-		BuyItemHeld.instance.queue_free()
-	BuyItemHeld.instance = self
-
-
-func _exit_tree() -> void:
-	if Engine.is_editor_hint():
-		return
-	BuyItemHeld.instance = null

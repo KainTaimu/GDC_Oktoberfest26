@@ -1,6 +1,10 @@
 @tool
 extends MarginContainer
 
+const a := 15
+const b := 90
+const E := 2.718281828459045235360287471352
+
 @export var item_name: StringName:
 	get:
 		return item_name
@@ -24,7 +28,6 @@ extends MarginContainer
 		if _icon != null:
 			_icon.set_deferred("texture", v)
 @export var item_scene: PackedScene
-
 @export_group("Internal")
 @export var _name_label: RichTextLabel
 @export var _price_label: RichTextLabel
@@ -32,17 +35,12 @@ extends MarginContainer
 @export var _held_item_scene: PackedScene = preload("uid://vojbxj0sf2cg")
 @export var _helper_path_hint: PackedScene = preload("uid://efulxxbgqdrq")
 
-var _mouse_inside: bool
 var item_scene_instance: Node
-var _helper_hint: HelperPathHint
-
-var _shake: float
-const a := 15
-const b := 90
-const E := 2.718281828459045235360287471352
-
 var col: Color = Color.WHITE
 var col_tween: Tween
+var _mouse_inside: bool
+var _helper_hint: HelperPathHint
+var _shake: float
 
 
 func _ready() -> void:
@@ -67,6 +65,13 @@ func _input(event: InputEvent) -> void:
 	create_buy_item_held()
 	if _helper_path_hint != null and item_scene_instance is Npc:
 		_create_helper_path_hint()
+
+
+func _draw() -> void:
+	var rect := get_rect()
+	rect.position = Vector2(0, 0)
+	if _mouse_inside:
+		draw_rect(rect.grow(-1), col, false, 1)
 
 
 func create_buy_item_held():
@@ -114,13 +119,6 @@ func _on_item_placed():
 		item_scene_instance.queue_free()
 		if _helper_hint != null:
 			_helper_hint.queue_free()
-
-
-func _draw() -> void:
-	var rect := get_rect()
-	rect.position = Vector2(0, 0)
-	if _mouse_inside:
-		draw_rect(rect.grow(-1), col, false, 1)
 
 
 func _on_mouse_entered() -> void:

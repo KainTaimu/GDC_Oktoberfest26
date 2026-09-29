@@ -3,7 +3,6 @@ extends AbstractFsmState
 
 @export var _state_name: StringName = &"buying"
 @export var owner_node: Npc
-
 @export var station_routes: RecipeRoute
 @export var fsm_manager: NpcFsm
 
@@ -20,12 +19,6 @@ func _ready() -> void:
 	navigation_agent.velocity_computed.connect(_on_velocity_computed)
 	add_child(navigation_agent)
 	navigation_agent.process_mode = ProcessMode.PROCESS_MODE_DISABLED
-
-
-func _on_velocity_computed(safe_velocity: Vector2):
-	owner_node.velocity = safe_velocity
-	owner_node.move_and_slide()
-	owner_node.sprite.flip_h = owner_node.velocity.x < 0
 
 
 func start() -> void:
@@ -76,3 +69,9 @@ func process(_delta: float):
 
 func get_state_name() -> StringName:
 	return _state_name
+
+
+func _on_velocity_computed(safe_velocity: Vector2):
+	owner_node.velocity = safe_velocity
+	owner_node.move_and_slide()
+	owner_node.sprite.flip_h = owner_node.velocity.x < 0

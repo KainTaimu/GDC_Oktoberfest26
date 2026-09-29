@@ -1,5 +1,6 @@
 class_name StationPathing
 
+
 ## Returns the closest station of type `station_type` to point `p`
 static func get_closest_station(
 		p: Vector2,

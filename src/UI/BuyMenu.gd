@@ -5,7 +5,6 @@ extends CanvasLayer
 @export var _body: Control
 @export var _main_panel: Control
 @export var _close_button_label: Label
-
 @export var show_time: float = 0.5
 
 var _shown: bool = false

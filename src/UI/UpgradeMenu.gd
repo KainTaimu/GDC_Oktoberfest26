@@ -4,7 +4,6 @@ extends VFlowContainer
 @export var _button_v_box: BoxContainer
 
 var button_script := preload("uid://bw4d4h8shuaq8")
-
 var shown: bool
 
 

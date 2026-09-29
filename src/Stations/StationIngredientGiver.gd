@@ -8,7 +8,6 @@ extends AbstractStation
 		label_name = v
 		_label.text = v
 @export var gives: PackedScene
-
 @export var _label: Label
 
 

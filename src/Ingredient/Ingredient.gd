@@ -12,7 +12,6 @@ enum Types { NONE, POTATOES, MASHED_POTATOES, BEER_MUG }
 		base_ingredient_name = v
 		on_changed.emit()
 @export var ingredient_type: Types = Types.NONE
-
 @export var actions_mapping: Dictionary[AbstractStation.Types, AbstractIngredientModifier]
 
 var ingredient_name:
@@ -28,6 +27,14 @@ var _modifiers: Array[AbstractIngredientModifier]:
 		return found as Array[AbstractIngredientModifier]
 
 
+func _exit_tree() -> void:
+	on_changed.emit()
+
+
+func _to_string() -> String:
+	return "Ingredient(%s)" % base_ingredient_name
+
+
 func try_station_action(station: AbstractStation):
 	var action: AbstractIngredientModifier = actions_mapping.get(station.station_type)
 	if action == null:
@@ -41,11 +48,3 @@ func try_station_action(station: AbstractStation):
 func has_modifier(type: AbstractIngredientModifier.Type) -> bool:
 	# TODO: Uses magic string at call sites.
 	return _modifiers.any(func(x: AbstractIngredientModifier): return x.get_modifier_type() == type && x.active)
-
-
-func _exit_tree() -> void:
-	on_changed.emit()
-
-
-func _to_string() -> String:
-	return "Ingredient(%s)" % base_ingredient_name

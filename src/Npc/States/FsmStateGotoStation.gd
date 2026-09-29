@@ -1,22 +1,17 @@
 class_name FsmStateGotoStation
 extends AbstractFsmState
 
+static var max_station_distance: float = 200
+
 @export var _state_name: StringName = &"goto_station"
 @export var owner_node: Npc
 @export var station_routes: RecipeRoute
-static var max_station_distance: float = 200
-
-@onready var fsm_manager: NpcFsm = $".."
 
 var navigation_agent: NavigationAgent2D
 var station_idx: int
 var current_station: StationSalesStand
 
-
-func _on_velocity_computed(safe_velocity: Vector2):
-	owner_node.velocity = safe_velocity
-	owner_node.move_and_slide()
-	owner_node.sprite.flip_h = owner_node.velocity.x < 0
+@onready var fsm_manager: NpcFsm = $".."
 
 
 func start() -> void:
@@ -71,6 +66,12 @@ func process(_delta: float):
 
 func get_state_name() -> StringName:
 	return _state_name
+
+
+func _on_velocity_computed(safe_velocity: Vector2):
+	owner_node.velocity = safe_velocity
+	owner_node.move_and_slide()
+	owner_node.sprite.flip_h = owner_node.velocity.x < 0
 
 
 func _get_closest_station(station_type: AbstractStation.Types) -> AbstractStation:

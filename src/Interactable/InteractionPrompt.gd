@@ -6,7 +6,6 @@ signal on_interacted
 
 @export var interact_behavior: AbstractInteractBehavior
 @export var area: CollisionShape2D
-
 @export var radius: float = 24:
 	get:
 		return radius
@@ -15,16 +14,6 @@ signal on_interacted
 		var change_shape_radius := func():
 			area.shape.radius = radius
 		change_shape_radius.call_deferred()
-
-var progress: float:
-	get:
-		return progress
-	set(v):
-		var old := progress
-		progress = clampf(v, 0, 1)
-		if is_equal_approx(old, progress):
-			return
-		queue_redraw()
 @export var progress_radius: float = 32:
 	get:
 		return progress_radius
@@ -38,11 +27,9 @@ var progress: float:
 		progress_color = v
 		_color = v
 		queue_redraw()
-
 @export var time_to_complete: float = 0.5
 @export var show_time: float = 1.0
 @export var interaction_cooldown: float = 1
-
 @export_category("Debug")
 @export var _show_hints: bool = false:
 	get:
@@ -51,6 +38,16 @@ var progress: float:
 		_show_hints = v
 		queue_redraw()
 
+var progress: float:
+	get:
+		return progress
+	set(v):
+		var old := progress
+		progress = clampf(v, 0, 1)
+		if is_equal_approx(old, progress):
+			return
+		queue_redraw()
+var tween: Tween
 var _color: Color = Color.TRANSPARENT:
 	get:
 		return _color
@@ -63,8 +60,6 @@ var _interaction_cooldown: float:
 		return _interaction_cooldown
 	set(v):
 		_interaction_cooldown = max(0, v)
-
-var tween: Tween
 
 
 func _process(delta: float) -> void:
@@ -96,10 +91,6 @@ func _input(event: InputEvent) -> void:
 		interact_behavior.on_release()
 
 
-func disable():
-	$Area2D.process_mode = ProcessMode.PROCESS_MODE_DISABLED
-
-
 func _draw() -> void:
 	# background
 	draw_circle(Vector2.ZERO, progress_radius, Color(_color, _color.a * 0.1), true, -1, true)
@@ -110,6 +101,10 @@ func _draw() -> void:
 	if Engine.is_editor_hint() && _show_hints:
 		# outer ring editor hint
 		draw_circle(Vector2.ZERO, progress_radius, Color.GREEN, false, 1, false)
+
+
+func disable():
+	$Area2D.process_mode = ProcessMode.PROCESS_MODE_DISABLED
 
 
 func interact():

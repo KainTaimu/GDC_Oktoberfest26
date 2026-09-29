@@ -1,5 +1,6 @@
 extends RayCast2D
 
+
 func _input(event: InputEvent) -> void:
 	var mouse := event as InputEventMouse
 	if mouse == null:

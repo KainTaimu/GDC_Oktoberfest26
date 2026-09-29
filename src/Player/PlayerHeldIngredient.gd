@@ -9,6 +9,18 @@ var held_ingredient: Ingredient:
 		return _held_ingredient
 
 
+# PERF: Expensive polling
+func _physics_process(_delta: float) -> void:
+	if held_ingredient != null:
+		label.text = held_ingredient.ingredient_name
+	else:
+		label.text = ""
+
+
+func _to_string() -> String:
+	return "PlayerHeldIngredient(%s)" % held_ingredient
+
+
 ## get the currently held ingredient. may be null if not holding anything
 func get_held_ingredient() -> Ingredient:
 	return held_ingredient
@@ -32,15 +44,3 @@ func try_set_held_ingredient(ingredient: Ingredient) -> bool:
 	_held_ingredient = ingredient
 	add_child(_held_ingredient)
 	return true
-
-
-# PERF: Expensive polling
-func _physics_process(_delta: float) -> void:
-	if held_ingredient != null:
-		label.text = held_ingredient.ingredient_name
-	else:
-		label.text = ""
-
-
-func _to_string() -> String:
-	return "PlayerHeldIngredient(%s)" % held_ingredient

@@ -11,17 +11,14 @@ signal on_sale_complete(earned_money: int)
 	set(v):
 		label_name = v
 		_label.text = v
-
 @export var items_per_interaction: Stat
 @export var items_per_interaction_helper: Stat
 @export var seconds_per_item: Stat
 @export var money_per_item: Stat
-
 @export_group("Internal")
 @export var _label: Label
 
 var quantity: int
-
 var t: float
 
 

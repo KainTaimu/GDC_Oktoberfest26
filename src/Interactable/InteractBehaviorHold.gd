@@ -2,6 +2,7 @@
 class_name InteractBehaviorHold
 extends AbstractInteractBehavior
 
+
 func on_press():
 	active = true
 

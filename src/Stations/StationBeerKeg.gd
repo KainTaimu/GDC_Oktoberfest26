@@ -1,5 +1,6 @@
 extends AbstractStation
 
+
 func interact() -> void:
 	var held := LevelData.main_player.held_ingredient
 	assert(held != null, "expected LevelData.main_player to have PlayerHeldIngredient")

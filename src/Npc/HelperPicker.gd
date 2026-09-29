@@ -1,25 +1,19 @@
 extends Node2D
 
-var mouse_inside: bool
-var picked: bool
+static var currently_picked: Node2D
 
 @export var fsm: NpcFsm
 @export_category("Internal")
 @export var _help_lbl: Label
 
-@onready var parent := get_parent() as Node2D
+var mouse_inside: bool
+var picked: bool
 
-static var currently_picked: Node2D
+@onready var parent := get_parent() as Node2D
 
 
 func _process(_delta: float) -> void:
 	queue_redraw()
-
-
-func _draw() -> void:
-	if not picked:
-		return
-	draw_circle(Vector2.ZERO, FsmStateGotoStation.max_station_distance, Color.GREEN, false, 1)
 
 
 func _input(event: InputEvent) -> void:
@@ -35,6 +29,12 @@ func _input(event: InputEvent) -> void:
 	if mo == null:
 		return
 	parent.global_position = get_global_mouse_position()
+
+
+func _draw() -> void:
+	if not picked:
+		return
+	draw_circle(Vector2.ZERO, FsmStateGotoStation.max_station_distance, Color.GREEN, false, 1)
 
 
 func toggle_pick():

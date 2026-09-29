@@ -1,5 +1,6 @@
 extends AbstractIngredientModifier
 
+
 func try_apply_modifier() -> bool:
 	var parent := get_parent() as Ingredient
 	assert(parent != null, "expected parent to be Ingredient")

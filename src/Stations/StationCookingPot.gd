@@ -1,6 +1,7 @@
 class_name StationCookingPot
 extends AbstractStation
 
+
 func interact() -> void:
 	var held := LevelData.main_player.find_child("PlayerHeldIngredient") as PlayerHeldIngredient
 	if held == null:

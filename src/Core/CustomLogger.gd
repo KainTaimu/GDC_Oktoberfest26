@@ -1,6 +1,7 @@
 class_name CustomLogger
 extends Object
 
+
 static func log_info(...args: Array) -> void:
 	send_log(print_rich, "[color=white][Info  :  %s] %s[/color]" % [get_caller_name(), construct_string(args)])
 

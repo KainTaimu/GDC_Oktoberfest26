@@ -1,5 +1,6 @@
 extends Node
 
+
 func _input(_event: InputEvent) -> void:
 	if OS.has_feature("prod"):
 		return

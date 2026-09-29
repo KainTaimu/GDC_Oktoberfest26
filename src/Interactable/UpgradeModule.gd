@@ -11,7 +11,6 @@ signal on_last_upgrade_set
 	set(v):
 		_upgrades = v
 		_validate_upgrades.call_deferred()
-
 @export var _validate: bool:
 	get:
 		return false
@@ -27,7 +26,6 @@ var _upgrade_index: int = -1:
 	set(v):
 		# assert(v < 0 or v >= len(_upgrades), "_upgrade_index out of range")
 		_upgrade_index = v
-
 var _last_upgrade_reached: bool
 
 
