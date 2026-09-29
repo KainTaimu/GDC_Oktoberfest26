@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://ch7esu5ho720d" path="res://resources/Themes/StationLabel.tres" id="5_j57q6"]
 [ext_resource type="Script" uid="uid://c8h24culo3ew3" path="res://src/UI/ProgressPie.gd" id="5_xw3ci"]
 [ext_resource type="Script" uid="uid://cod7jdxwjyi0e" path="res://src/UI/MoneyPopup.gd" id="6_h2604"]
-[ext_resource type="Script" uid="uid://dlv4rgqtynx2w" path="res://src/Stations/StationSpawnPopup.gd" id="8_4wnsy"]
+[ext_resource type="Script" uid="uid://y1lclxrb6mls" path="res://src/Stations/StationSpawnPopup.gd" id="8_4wnsy"]
 
 [sub_resource type="Resource" id="Resource_3gwmf"]
 resource_local_to_scene = true
@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://lsttcm8jal4o"
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5uv32"]
 size = Vector2(64, 64)
 
-[sub_resource type="Resource" id="Resource_mjedw"]
+[sub_resource type="Resource" id="Resource_4wnsy"]
 resource_local_to_scene = true
 script = ExtResource("3_7f2ed")
 metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
@@ -54,7 +54,7 @@ texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_5uv32")
 
 [node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_5uv32")]
-interact_behavior = SubResource("Resource_mjedw")
+interact_behavior = SubResource("Resource_4wnsy")
 
 [node name="Label" type="Label" parent="." unique_id=689880663]
 anchors_preset = 8

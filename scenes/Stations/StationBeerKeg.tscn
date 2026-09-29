@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bdis13wmborjl" path="res://scenes/Interactable/InteractionPrompt.tscn" id="2_ka2nr"]
 [ext_resource type="Script" uid="uid://fm67ugt30l3j" path="res://src/Interactable/InteractBehaviorHold.gd" id="3_ka2nr"]
 [ext_resource type="Theme" uid="uid://ch7esu5ho720d" path="res://resources/Themes/StationLabel.tres" id="4_ijlth"]
-[ext_resource type="Script" uid="uid://dlv4rgqtynx2w" path="res://src/Stations/StationSpawnPopup.gd" id="5_teo0i"]
+[ext_resource type="Script" uid="uid://y1lclxrb6mls" path="res://src/Stations/StationSpawnPopup.gd" id="5_teo0i"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_teo0i"]
 size = Vector2(64, 64)

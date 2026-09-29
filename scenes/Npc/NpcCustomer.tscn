@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dvd7qdg01yid6"]
 
 [ext_resource type="PackedScene" uid="uid://ccsw34iu1ba5g" path="res://scenes/Npc/Npc.tscn" id="1_li5wx"]
-[ext_resource type="Shader" uid="uid://bvo3aps1d0sva" path="res://src/Shaders/fade.gdshader" id="2_or31s"]
+[ext_resource type="Shader" uid="uid://c2g88okfkiaos" path="res://src/Shaders/fade.gdshader" id="2_or31s"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_qkxhk"]
 [ext_resource type="PackedScene" uid="uid://qsp4hft17ipf" path="res://scenes/Npc/States/FsmStateBuying.tscn" id="3_ks3pe"]
 [ext_resource type="PackedScene" uid="uid://btd8w2vr2yx0v" path="res://scenes/Npc/States/FsmStateGoingHome.tscn" id="4_ks3pe"]
-[ext_resource type="Script" uid="uid://des855lp7pj75" path="res://src/Npc/StationRouteGenerator.gd" id="5_or31s"]
+[ext_resource type="Script" uid="uid://0xp2kvyyltj3" path="res://src/Npc/StationRouteGenerator.gd" id="5_or31s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e42uu"]
 shader = ExtResource("2_or31s")

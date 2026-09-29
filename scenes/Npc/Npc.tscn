@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ccsw34iu1ba5g"]
 
-[ext_resource type="Script" uid="uid://vcsjcnjd17ay" path="res://src/Npc/Npc.gd" id="1_83j1y"]
+[ext_resource type="Script" uid="uid://catetp6xuhlg3" path="res://src/Npc/Npc.gd" id="1_83j1y"]
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_7r6gg"]
 [ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="3_4ag7u"]
-[ext_resource type="Script" uid="uid://dt26vvgyd7wg7" path="res://src/Npc/NpcFsm.gd" id="4_83j1y"]
+[ext_resource type="Script" uid="uid://bajyp7ctagrir" path="res://src/Npc/NpcFsm.gd" id="4_83j1y"]
 [ext_resource type="PackedScene" uid="uid://duknwq443g36c" path="res://scenes/Npc/States/FsmStateIdle.tscn" id="5_4ottw"]
 
 [sub_resource type="Resource" id="Resource_rsfvd"]
