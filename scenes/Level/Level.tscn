@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_g4usa"]
 [ext_resource type="Script" uid="uid://bg0uk35hh6ra7" path="res://src/Level/LevelDataSceneProxy.gd" id="6_ooqe3"]
 [ext_resource type="PackedScene" uid="uid://dvd7qdg01yid6" path="res://scenes/Npc/NpcCustomer.tscn" id="8_2prus"]
-[ext_resource type="Script" uid="uid://c3fadcv8s72u0" path="res://src/Level/CustomerSpawner.gd" id="9_f3r0x"]
+[ext_resource type="Script" uid="uid://drmskh0i272ov" path="res://src/Level/CustomerSpawner.gd" id="9_f3r0x"]
 [ext_resource type="Script" uid="uid://d0wio1lgbuxyt" path="res://src/Level/HelpersOrganizer.gd" id="11_drtc2"]
 
 [sub_resource type="Resource" id="Resource_g4usa"]

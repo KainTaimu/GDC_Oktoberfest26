@@ -14,7 +14,6 @@ func end() -> void:
 
 
 func process(_delta: float):
-	print(owner_node.velocity)
 	pass
 
 
