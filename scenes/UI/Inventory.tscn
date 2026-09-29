@@ -38,7 +38,7 @@ func _on_pressed() -> void:
 	if len(group) == 0:
 		return
 	for node in group:
-		var helper := node as Helper
+		var helper := node as Npc
 		if helper == null:
 			continue
 		helper.move_speed.multipliers.append(1.5)
@@ -65,7 +65,6 @@ corner_radius_bottom_right = 4
 corner_detail = 5
 
 [node name="Inventory" type="CanvasLayer" unique_id=24067664 node_paths=PackedStringArray("_body", "_main_panel", "_close_button")]
-visible = false
 script = ExtResource("1_3n8s2")
 _body = NodePath("Body")
 _main_panel = NodePath("Body/VBoxContainer/MainPanel")

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ccsw34iu1ba5g"]
 
-[ext_resource type="Script" uid="uid://vcsjcnjd17ay" path="res://src/Helpers/Helper.gd" id="1_rgd1u"]
-[ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="2_xmxpy"]
-[ext_resource type="Script" uid="uid://dt26vvgyd7wg7" path="res://src/Helpers/HelperFsm.gd" id="3_kyptm"]
-[ext_resource type="PackedScene" uid="uid://duknwq443g36c" path="res://scenes/Helpers/States/FsmStateIdle.tscn" id="5_xmxpy"]
-[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="6_kyptm"]
+[ext_resource type="Script" uid="uid://vcsjcnjd17ay" path="res://src/Npc/Npc.gd" id="1_83j1y"]
+[ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_7r6gg"]
+[ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="3_4ag7u"]
+[ext_resource type="Script" uid="uid://dt26vvgyd7wg7" path="res://src/Npc/NpcFsm.gd" id="4_83j1y"]
+[ext_resource type="PackedScene" uid="uid://duknwq443g36c" path="res://scenes/Npc/States/FsmStateIdle.tscn" id="5_4ottw"]
 
 [sub_resource type="Resource" id="Resource_rsfvd"]
 resource_local_to_scene = true
-script = ExtResource("6_kyptm")
+script = ExtResource("2_7r6gg")
 base_value = 200.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
@@ -16,19 +16,19 @@ metadata/_custom_type_script = "uid://lsttcm8jal4o"
 radius = 16.03122
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_socpp"]
-atlas = ExtResource("2_xmxpy")
+atlas = ExtResource("3_4ag7u")
 region = Rect2(0, 0, 31, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxc31"]
-atlas = ExtResource("2_xmxpy")
+atlas = ExtResource("3_4ag7u")
 region = Rect2(31, 0, 31, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_puxyr"]
-atlas = ExtResource("2_xmxpy")
+atlas = ExtResource("3_4ag7u")
 region = Rect2(62, 0, 31, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmokv"]
-atlas = ExtResource("2_xmxpy")
+atlas = ExtResource("3_4ag7u")
 region = Rect2(93, 0, 31, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2vivg"]
@@ -51,18 +51,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_jwpct"]
-script/source = "extends AnimatedSprite2D
-
-@export var cbody: CharacterBody2D
-
-#func _process(_delta: float) -> void:
-	#if Engine.get_process_frames() % 30:
-		#flip_h = cbody.velocity.x < 0
-"
-
-[node name="Helper" type="CharacterBody2D" unique_id=265917294 node_paths=PackedStringArray("fsm", "sprite") groups=["helpers"]]
-script = ExtResource("1_rgd1u")
+[node name="Npc" type="CharacterBody2D" unique_id=265917294 node_paths=PackedStringArray("fsm", "sprite") groups=["helpers"]]
+script = ExtResource("1_83j1y")
 move_speed = SubResource("Resource_rsfvd")
 fsm = NodePath("HelperFsm")
 sprite = NodePath("AnimatedSprite2D")
@@ -71,15 +61,13 @@ sprite = NodePath("AnimatedSprite2D")
 shape = SubResource("CircleShape2D_kbwam")
 disabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=834254190 node_paths=PackedStringArray("cbody")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=834254190]
 sprite_frames = SubResource("SpriteFrames_2vivg")
 autoplay = "default"
-script = SubResource("GDScript_jwpct")
-cbody = NodePath("..")
 
 [node name="HelperFsm" type="Node2D" parent="." unique_id=1274066329 node_paths=PackedStringArray("target", "current_state")]
-script = ExtResource("3_kyptm")
+script = ExtResource("4_83j1y")
 target = NodePath("..")
 current_state = NodePath("FsmStateIdle")
 
-[node name="FsmStateIdle" parent="HelperFsm" unique_id=210564790 instance=ExtResource("5_xmxpy")]
+[node name="FsmStateIdle" parent="HelperFsm" unique_id=210564790 instance=ExtResource("5_4ottw")]

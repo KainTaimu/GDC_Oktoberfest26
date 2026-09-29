@@ -9,7 +9,7 @@ signal on_work_finished
 @export var station_routes: RecipeRoute
 @export var owner_sprite: AnimatedSprite2D
 
-@onready var fsm_manager: HelperFsm = $".."
+@onready var fsm_manager: NpcFsm = $".."
 
 
 func start() -> void:

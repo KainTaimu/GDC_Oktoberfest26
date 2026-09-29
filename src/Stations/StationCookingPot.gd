@@ -13,5 +13,5 @@ func interact() -> void:
 	ingredient.try_station_action(self)
 
 
-func interact_forced() -> void:
-	pass
+func interact_forced() -> bool:
+	return true

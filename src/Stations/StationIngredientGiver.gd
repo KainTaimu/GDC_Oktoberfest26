@@ -24,5 +24,5 @@ func interact() -> void:
 	held.try_set_held_ingredient(item)
 
 
-func interact_forced() -> void:
-	pass
+func interact_forced() -> bool:
+	return true

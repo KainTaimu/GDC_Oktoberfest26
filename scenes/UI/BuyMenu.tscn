@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b6i7oasowpmbj" path="res://scenes/Stations/StationChoppingBoard.tscn" id="7_h81uo"]
 [ext_resource type="PackedScene" uid="uid://3pqmmqmplwci" path="res://scenes/Stations/StationCookingPot.tscn" id="8_h81uo"]
 [ext_resource type="PackedScene" uid="uid://dfws7sfb1srt6" path="res://scenes/Stations/StationMashedPotatoesSalesStand.tscn" id="9_xt5tr"]
-[ext_resource type="PackedScene" uid="uid://db8g6khatm1va" path="res://scenes/Helpers/HelperMPotatoes.tscn" id="10_bscqc"]
-[ext_resource type="PackedScene" uid="uid://bm2nrn0q1j648" path="res://scenes/Helpers/HelperBeer.tscn" id="10_cmq1h"]
+[ext_resource type="PackedScene" uid="uid://db8g6khatm1va" path="res://scenes/Npc/NpcHelperMPotatoes.tscn" id="10_bscqc"]
+[ext_resource type="PackedScene" uid="uid://bm2nrn0q1j648" path="res://scenes/Npc/NpcHelperBeer.tscn" id="10_cmq1h"]
 [ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="10_ny8eh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuija"]

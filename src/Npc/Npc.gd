@@ -1,7 +1,7 @@
-class_name Helper
+class_name Npc
 extends CharacterBody2D
 
 @export var move_speed: Stat
 
-@export var fsm: HelperFsm
+@export var fsm: NpcFsm
 @export var sprite: AnimatedSprite2D

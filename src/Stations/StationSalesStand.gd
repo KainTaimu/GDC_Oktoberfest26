@@ -26,19 +26,16 @@ var t: float
 
 
 func _process(delta: float) -> void:
+	t = max(0, t - delta)
 	if quantity <= 0 || quantity <= 0:
-		t = seconds_per_item.value
 		return
 
-	t = t - delta
 	if not is_zero_approx(seconds_per_item.value):
 		on_progress_changed.emit(t / seconds_per_item.value)
 	if t > 0:
 		return
 
-	LevelData.money += roundi(money_per_item.value)
-	t = wrapf(t - delta, 0, seconds_per_item.value)
-	on_sale()
+	# on_sale()
 
 
 func interact() -> void:
@@ -51,13 +48,22 @@ func interact() -> void:
 		CustomLogger.log_debug("cant sell: held item not supported")
 		return
 	held.try_set_held_ingredient(null)
+	restock()
+
+
+func interact_forced() -> bool:
+	if quantity <= 0:
+		return false
+	on_sale()
+	return true
+
+
+func restock() -> void:
 	quantity += roundi(items_per_interaction.value)
-
-
-func interact_forced() -> void:
-	quantity += roundi(items_per_interaction_helper.value)
 
 
 func on_sale() -> void:
 	quantity -= 1
+	t = seconds_per_item.value
+	LevelData.money += roundi(money_per_item.value)
 	on_sale_complete.emit(roundi(money_per_item.value))

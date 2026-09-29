@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4thhlcvkal7x"]
 
-[ext_resource type="Script" uid="uid://djlc7vrrl6res" path="res://src/Helpers/States/FsmStateWaitingForWork.gd" id="1_wphgn"]
+[ext_resource type="Script" uid="uid://djlc7vrrl6res" path="res://src/Npc/States/FsmStateWaitingForWork.gd" id="1_wphgn"]
 
 [sub_resource type="GDScript" id="GDScript_do71q"]
 script/source = "extends Label

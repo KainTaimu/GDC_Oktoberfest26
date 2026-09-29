@@ -65,7 +65,7 @@ func _input(event: InputEvent) -> void:
 
 	item_scene_instance = item_scene.instantiate()
 	create_buy_item_held()
-	if _helper_path_hint != null and item_scene_instance is Helper:
+	if _helper_path_hint != null and item_scene_instance is Npc:
 		_create_helper_path_hint()
 
 
@@ -87,7 +87,7 @@ func create_buy_item_held():
 
 
 func _create_helper_path_hint():
-	var helper := item_scene_instance as Helper
+	var helper := item_scene_instance as Npc
 	assert(helper != null)
 
 	var state := helper.fsm.current_state as FsmStateWaitingForWork
@@ -107,7 +107,7 @@ func _on_item_placed():
 	item_scene_instance.global_position = get_viewport().get_camera_2d().get_global_mouse_position().snapped(Vector2.ONE * 32)
 	if item_scene_instance is AbstractStation:
 		StationsOrganizer.instance.add_child(item_scene_instance)
-	elif item_scene_instance is Helper:
+	elif item_scene_instance is Npc:
 		HelpersOrganizer.instance.add_child(item_scene_instance)
 	else:
 		assert(false, "unexpected scene type")
