@@ -1,3 +1,4 @@
+class_name LevelDataSceneProxy
 extends Node
 
 @export var initial_money: int = 80
@@ -10,6 +11,7 @@ func _ready() -> void:
 		LevelData.money = initial_money
 	else:
 		LevelData.money = debug_initial_money
+	LevelData.local_level_data = self
 
 
 func _exit_tree() -> void:

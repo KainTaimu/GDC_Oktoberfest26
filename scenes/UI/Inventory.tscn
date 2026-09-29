@@ -39,9 +39,11 @@ func _on_pressed() -> void:
 		return
 	for node in group:
 		var helper := node as Npc
+		CustomLogger.log_debug(helper)
 		if helper == null:
 			continue
-		helper.move_speed.multipliers.append(1.5)
+		helper.move_speed.multipliers.append(2)
+		CustomLogger.log_debug(helper.move_speed)
 	queue_free()
 "
 
@@ -125,6 +127,7 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="Body/VBoxContainer/MainPanel/MarginContainer/VBoxContainer" unique_id=1998921311]
 layout_mode = 2
+tooltip_text = "Give your helpers a lil bit of fent to boost productivity"
 text = "Fent ×1"
 alignment = 0
 script = SubResource("GDScript_rhs5j")

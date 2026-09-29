@@ -14,7 +14,7 @@ script = ExtResource("2_3b7tr")
 base_value = 110.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[node name="NpcHelperBeer" unique_id=265917294 instance=ExtResource("1_631jj")]
+[node name="NpcHelperBeer" unique_id=265917294 groups=["helpers"] instance=ExtResource("1_631jj")]
 collision_layer = 7
 collision_mask = 32768
 input_pickable = true

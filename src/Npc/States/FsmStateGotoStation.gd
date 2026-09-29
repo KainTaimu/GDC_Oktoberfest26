@@ -55,6 +55,7 @@ func process(_delta: float):
 			current_station = closest
 		return
 
+	navigation_agent.max_speed = owner_node.move_speed.value
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 
 	var new_velocity: Vector2 = global_position.direction_to(next_path_position) * owner_node.move_speed.value

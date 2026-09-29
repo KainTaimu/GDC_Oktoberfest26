@@ -1,10 +1,11 @@
+class_name CustomerSpawner
 extends Node
 
 @export var enabled: bool = true
-@export var time_between_spawns: float = 1.0
+@export var time_between_spawns: Stat
 @export var spawn_margin: float = 0
 @export var npc_scenes: Array[PackedScene] = []
-@export var max_customers_at_once: int = 50
+@export var max_customers_at_once: Stat
 
 @export_category("Internal")
 @onready var _timer: Timer = Timer.new()
@@ -49,7 +50,7 @@ static func get_position_outside_viewport(
 
 
 func _ready() -> void:
-	_timer.wait_time = time_between_spawns
+	_timer.wait_time = time_between_spawns.value
 	_timer.timeout.connect(_on_spawn_timer_timeout)
 	add_child(_timer)
 	_timer.start()
@@ -71,6 +72,6 @@ func spawn():
 func _on_spawn_timer_timeout():
 	if _tree.get_node_count_in_group("stations_sell") == 0:
 		return
-	if _tree.get_node_count_in_group("customers") > max_customers_at_once:
+	if _tree.get_node_count_in_group("customers") >= max_customers_at_once.value:
 		return
 	spawn()
