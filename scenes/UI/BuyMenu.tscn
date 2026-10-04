@@ -120,19 +120,19 @@ size_flags_vertical = 3
 [node name="Pretzel ingredients" parent="VBoxContainer/MainPanel/TabContainer/Pretzels/GridContainer" unique_id=340722022 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
 item_name = &"Pretzel ingredients"
-item_price = 15
+item_price = 20
 item_scene = ExtResource("6_rc4cg")
 
 [node name="Kneading board" parent="VBoxContainer/MainPanel/TabContainer/Pretzels/GridContainer" unique_id=1205016737 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
 item_name = &"Kneading board"
-item_price = 50
+item_price = 25
 item_scene = ExtResource("7_h81uo")
 
 [node name="Oven" parent="VBoxContainer/MainPanel/TabContainer/Pretzels/GridContainer" unique_id=1495989500 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
 item_name = &"Oven"
-item_price = 15
+item_price = 35
 item_scene = ExtResource("8_h81uo")
 
 [node name="Pretzel Stand" parent="VBoxContainer/MainPanel/TabContainer/Pretzels/GridContainer" unique_id=1588054072 instance=ExtResource("2_v4cm6")]
