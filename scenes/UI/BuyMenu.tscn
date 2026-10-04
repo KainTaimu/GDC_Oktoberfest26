@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://k5nf2n0pf3he" path="res://src/UI/BuyMenu.gd" id="1_cuija"]
 [ext_resource type="PackedScene" uid="uid://cedr2f0bocc20" path="res://scenes/UI/BuyMenuItem.tscn" id="2_v4cm6"]
-[ext_resource type="PackedScene" uid="uid://cgtdaihc80pco" path="res://scenes/Stations/StationBeerSalesStand.tscn" id="3_t03ra"]
-[ext_resource type="PackedScene" uid="uid://dgl3t8eerkw68" path="res://scenes/Stations/StationBeerKeg.tscn" id="4_l7bwi"]
-[ext_resource type="PackedScene" uid="uid://dlwylg46kta1b" path="res://scenes/Stations/StationMugCrate.tscn" id="5_m21y0"]
-[ext_resource type="PackedScene" uid="uid://b6tqqw7p7shht" path="res://scenes/Stations/StationProduceBin.tscn" id="6_rc4cg"]
-[ext_resource type="PackedScene" uid="uid://b6i7oasowpmbj" path="res://scenes/Stations/StationChoppingBoard.tscn" id="7_h81uo"]
-[ext_resource type="PackedScene" uid="uid://3pqmmqmplwci" path="res://scenes/Stations/StationCookingPot.tscn" id="8_h81uo"]
-[ext_resource type="PackedScene" uid="uid://dfws7sfb1srt6" path="res://scenes/Stations/StationMashedPotatoesSalesStand.tscn" id="9_xt5tr"]
+[ext_resource type="PackedScene" uid="uid://cgtdaihc80pco" path="res://scenes/Stations/Beer/StationBeerSalesStand.tscn" id="3_t03ra"]
+[ext_resource type="PackedScene" uid="uid://dgl3t8eerkw68" path="res://scenes/Stations/Beer/StationBeerKeg.tscn" id="4_l7bwi"]
+[ext_resource type="PackedScene" uid="uid://dlwylg46kta1b" path="res://scenes/Stations/Beer/StationMugCrate.tscn" id="5_m21y0"]
+[ext_resource type="PackedScene" uid="uid://b6tqqw7p7shht" path="res://scenes/Stations/Pretzels/StationProduceBin.tscn" id="6_rc4cg"]
+[ext_resource type="PackedScene" uid="uid://b6i7oasowpmbj" path="res://scenes/Stations/Pretzels/StationChoppingBoard.tscn" id="7_h81uo"]
+[ext_resource type="PackedScene" uid="uid://3pqmmqmplwci" path="res://scenes/Stations/Pretzels/StationCookingPot.tscn" id="8_h81uo"]
+[ext_resource type="PackedScene" uid="uid://dfws7sfb1srt6" path="res://scenes/Stations/Pretzels/StationMashedPotatoesSalesStand.tscn" id="9_xt5tr"]
 [ext_resource type="PackedScene" uid="uid://db8g6khatm1va" path="res://scenes/Npc/NpcHelperMPotatoes.tscn" id="10_bscqc"]
 [ext_resource type="PackedScene" uid="uid://bm2nrn0q1j648" path="res://scenes/Npc/NpcHelperBeer.tscn" id="10_cmq1h"]
 [ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="10_ny8eh"]
@@ -107,37 +107,37 @@ item_name = &"Beer stand"
 item_price = 50
 item_scene = ExtResource("3_t03ra")
 
-[node name="Mashed Potatoes" type="ScrollContainer" parent="VBoxContainer/MainPanel/TabContainer" unique_id=988308786]
+[node name="Pretzels" type="ScrollContainer" parent="VBoxContainer/MainPanel/TabContainer" unique_id=988308786]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="GridContainer" type="HBoxContainer" parent="VBoxContainer/MainPanel/TabContainer/Mashed Potatoes" unique_id=12446189]
+[node name="GridContainer" type="HBoxContainer" parent="VBoxContainer/MainPanel/TabContainer/Pretzels" unique_id=12446189]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Produce Bin" parent="VBoxContainer/MainPanel/TabContainer/Mashed Potatoes/GridContainer" unique_id=340722022 instance=ExtResource("2_v4cm6")]
+[node name="Pretzel ingredients" parent="VBoxContainer/MainPanel/TabContainer/Pretzels/GridContainer" unique_id=340722022 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
-item_name = &"Produce Bin"
+item_name = &"Pretzel ingredients"
 item_price = 15
 item_scene = ExtResource("6_rc4cg")
 
-[node name="Cutting Board" parent="VBoxContainer/MainPanel/TabContainer/Mashed Potatoes/GridContainer" unique_id=1205016737 instance=ExtResource("2_v4cm6")]
+[node name="Kneading board" parent="VBoxContainer/MainPanel/TabContainer/Pretzels/GridContainer" unique_id=1205016737 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
-item_name = &"Cutting Board"
+item_name = &"Kneading board"
 item_price = 50
 item_scene = ExtResource("7_h81uo")
 
-[node name="Cooking Pot" parent="VBoxContainer/MainPanel/TabContainer/Mashed Potatoes/GridContainer" unique_id=1495989500 instance=ExtResource("2_v4cm6")]
+[node name="Oven" parent="VBoxContainer/MainPanel/TabContainer/Pretzels/GridContainer" unique_id=1495989500 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
-item_name = &"Cooking Pot"
+item_name = &"Oven"
 item_price = 15
 item_scene = ExtResource("8_h81uo")
 
-[node name="M_Potatoes Stand" parent="VBoxContainer/MainPanel/TabContainer/Mashed Potatoes/GridContainer" unique_id=1588054072 instance=ExtResource("2_v4cm6")]
+[node name="Pretzel Stand" parent="VBoxContainer/MainPanel/TabContainer/Pretzels/GridContainer" unique_id=1588054072 instance=ExtResource("2_v4cm6")]
 layout_mode = 2
-item_name = &"M.Potatoes Stand"
+item_name = &"Pretzel Stand"
 item_price = 15
 item_scene = ExtResource("9_xt5tr")
 

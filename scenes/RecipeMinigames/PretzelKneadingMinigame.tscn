@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://7q6y0h7fjlie"]
+
+[ext_resource type="Script" uid="uid://p8cvqi1svhgn" path="res://src/RecipeMinigames/PretzelKneadingMinigame.gd" id="1_rcbam"]
+[ext_resource type="Script" uid="uid://bjcxb5xwpqyoq" path="res://src/RecipeMinigames/DoughDrawer.gd" id="2_latsj"]
+
+[node name="PretzelKneadingMinigame" type="CanvasLayer" unique_id=1334373376]
+script = ExtResource("1_rcbam")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1544742454]
+custom_minimum_size = Vector2(512, 512)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CircleDrawer" type="Control" parent="PanelContainer" unique_id=343263174 node_paths=PackedStringArray("minigame", "label")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_latsj")
+color = Color(0.72, 0.57600003, 0.288, 1)
+minigame = NodePath("../..")
+label = NodePath("VBoxContainer/Label")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CircleDrawer" unique_id=957582396]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -21.0
+offset_right = 73.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/CircleDrawer/VBoxContainer" unique_id=376549117]
+layout_mode = 2
+text = "Move mouse to knead!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/CircleDrawer/VBoxContainer" unique_id=1998207813]
+layout_mode = 2
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -4,31 +4,31 @@
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_hdnqr"]
 [ext_resource type="Script" uid="uid://8h5nnxqt3j1a" path="res://src/Interactable/InteractBehaviorToggle.gd" id="3_v68k1"]
 
-[sub_resource type="Resource" id="Resource_m5o20"]
+[sub_resource type="Resource" id="Resource_2k4jc"]
 resource_local_to_scene = true
 script = ExtResource("2_hdnqr")
 base_value = 10.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_hdnqr"]
+[sub_resource type="Resource" id="Resource_lcfxd"]
 resource_local_to_scene = true
 script = ExtResource("2_hdnqr")
 base_value = 4.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_v68k1"]
+[sub_resource type="Resource" id="Resource_pprh0"]
 resource_local_to_scene = true
 script = ExtResource("2_hdnqr")
 base_value = 0.5
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_wdtiy"]
+[sub_resource type="Resource" id="Resource_15q8y"]
 resource_local_to_scene = true
 script = ExtResource("2_hdnqr")
 base_value = 2.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_ta8gy"]
+[sub_resource type="Resource" id="Resource_hnygd"]
 resource_local_to_scene = true
 script = ExtResource("3_v68k1")
 metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
@@ -36,14 +36,14 @@ metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
 [node name="StationMashedPotatoesSalesStand" unique_id=1090745131 instance=ExtResource("1_m5o20")]
 sells_what = 2
 label_name = &"M. Potato Stand"
-items_per_interaction = SubResource("Resource_m5o20")
-items_per_interaction_helper = SubResource("Resource_hdnqr")
-seconds_per_item = SubResource("Resource_v68k1")
-money_per_item = SubResource("Resource_wdtiy")
+items_per_interaction = SubResource("Resource_2k4jc")
+items_per_interaction_helper = SubResource("Resource_lcfxd")
+seconds_per_item = SubResource("Resource_pprh0")
+money_per_item = SubResource("Resource_15q8y")
 station_type = 3
 
 [node name="InteractionPrompt" parent="." index="1" unique_id=1811079141]
-interact_behavior = SubResource("Resource_ta8gy")
+interact_behavior = SubResource("Resource_hnygd")
 
 [node name="Label" parent="." index="2" unique_id=689880663]
 custom_maximum_size = Vector2(64, -1)
@@ -55,7 +55,7 @@ offset_top = -95.0
 offset_right = 32.0
 offset_bottom = -32.0
 grow_vertical = 0
-text = "Mashed Potatoes Stand"
+text = "Pretzel stand"
 autowrap_mode = 2
 
 [node name="Progress" parent="." index="3" unique_id=487557772]

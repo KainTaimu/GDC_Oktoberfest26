@@ -86,6 +86,7 @@ func create_buy_item_held():
 	var scene := _held_item_scene.instantiate() as BuyItemHeld
 	scene.global_position = get_global_mouse_position()
 	scene.on_item_placed.connect(_on_item_placed)
+	scene.on_item_canceled.connect(_on_item_canceled)
 	scene.icon = item_icon
 	add_child(scene)
 	LevelData.money -= item_price
@@ -119,6 +120,10 @@ func _on_item_placed():
 		item_scene_instance.queue_free()
 		if _helper_hint != null:
 			_helper_hint.queue_free()
+
+
+func _on_item_canceled():
+	LevelData.money += item_price
 
 
 func _on_mouse_entered() -> void:

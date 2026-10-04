@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://by2wi4e84hi4l"]
+
+[ext_resource type="Script" uid="uid://br5vjxbjn762i" path="res://src/RecipeMinigames/BeerKegMinigame.gd" id="1_yw4om"]
+[ext_resource type="Script" uid="uid://dixa6fc4d678i" path="res://src/RecipeMinigames/Beer.gd" id="2_hhq2g"]
+
+[node name="BeerKegMinigame" type="CanvasLayer" unique_id=104918859]
+script = ExtResource("1_yw4om")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=964070253]
+offset_left = 704.0
+offset_top = 284.0
+offset_right = 1216.0
+offset_bottom = 796.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1461635549]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=979183220]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=345199039]
+layout_mode = 2
+text = "POUR"
+
+[node name="Beer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=446486819 node_paths=PackedStringArray("minigame")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_hhq2g")
+minigame = NodePath("../../../..")
+color = Color(0.89, 0.68233335, 0, 1)
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="PanelContainer/MarginContainer/VBoxContainer/Beer" method="_turn_on"]

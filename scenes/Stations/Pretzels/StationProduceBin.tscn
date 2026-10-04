@@ -10,7 +10,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dgvyr"]
 size = Vector2(64, 64)
 
-[sub_resource type="Resource" id="Resource_8hj08"]
+[sub_resource type="Resource" id="Resource_fmxve"]
 resource_local_to_scene = true
 script = ExtResource("3_7ln2f")
 metadata/_custom_type_script = "uid://fm67ugt30l3j"
@@ -25,7 +25,7 @@ texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_dgvyr")
 
 [node name="InteractionPrompt" parent="." unique_id=1811079141 instance=ExtResource("2_dgvyr")]
-interact_behavior = SubResource("Resource_8hj08")
+interact_behavior = SubResource("Resource_fmxve")
 
 [node name="Label" type="Label" parent="." unique_id=299296750]
 custom_maximum_size = Vector2(64, -1)
@@ -41,7 +41,7 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("5_i601n")
-text = "Produce bin"
+text = "Pretzel ingredients"
 horizontal_alignment = 1
 autowrap_mode = 2
 

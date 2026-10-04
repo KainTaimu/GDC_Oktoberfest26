@@ -3,6 +3,7 @@ class_name BuyItemHeld
 extends Node2D
 
 signal on_item_placed
+signal on_item_canceled
 
 static var instance: BuyItemHeld
 
@@ -44,12 +45,11 @@ func _input(event: InputEvent) -> void:
 		assert(button != null)
 		if !button.is_pressed():
 			return
+		if button.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
+			on_item_canceled.emit()
+			queue_free()
+			return
 		if button.button_index != MouseButton.MOUSE_BUTTON_LEFT:
 			return
 		on_item_placed.emit()
-		queue_free()
-
-	elif event is InputEventKey:
-		if not event.is_action_pressed("ui_cancel"):
-			return
 		queue_free()
