@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bcxrdnmca37va" path="res://src/Player/PlayerHeldIngredient.gd" id="5_fxc31"]
 [ext_resource type="Texture2D" uid="uid://bh3o2fs5xmn6m" path="res://assets/player.png" id="5_xcisb"]
 [ext_resource type="PackedScene" uid="uid://draeyg1sft7ba" path="res://scenes/UI/TopBar.tscn" id="6_socpp"]
+[ext_resource type="FontFile" uid="uid://b1dxvp7tetl0s" path="res://assets/Fonts/MunroSmall-wPZw.ttf" id="7_dqp0f"]
 [ext_resource type="PackedScene" uid="uid://dll3vngngepji" path="res://scenes/UI/BuyMenu.tscn" id="9_dqp0f"]
 [ext_resource type="PackedScene" uid="uid://jsawslw88heg" path="res://scenes/UI/Inventory.tscn" id="9_mmokv"]
 
@@ -104,12 +105,29 @@ sprite_frames = SubResource("SpriteFrames_do71q")
 autoplay = "default"
 frame_progress = 0.8709986
 
+[node name="Label" type="Label" parent="AnimatedSprite2D" unique_id=272536516]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -33.5
+offset_right = 4.5
+offset_bottom = -14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_fonts/font = ExtResource("7_dqp0f")
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=713256097]
 zoom = Vector2(1.2, 1.2)
 
 [node name="TopBar" parent="." unique_id=267657025 instance=ExtResource("6_socpp")]
 
 [node name="Inventory" parent="." unique_id=24067664 instance=ExtResource("9_mmokv")]
-visible = false
 
 [node name="BuyMenu" parent="." unique_id=1245596724 instance=ExtResource("9_dqp0f")]
