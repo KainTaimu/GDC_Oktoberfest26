@@ -4,46 +4,47 @@
 [ext_resource type="Script" uid="uid://lsttcm8jal4o" path="res://src/Data/Stat.gd" id="2_30lmw"]
 [ext_resource type="Script" uid="uid://8h5nnxqt3j1a" path="res://src/Interactable/InteractBehaviorToggle.gd" id="3_wvvpj"]
 
-[sub_resource type="Resource" id="Resource_6pdj3"]
+[sub_resource type="Resource" id="Resource_uqq44"]
 resource_local_to_scene = true
 script = ExtResource("2_30lmw")
 base_value = 20.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_30lmw"]
+[sub_resource type="Resource" id="Resource_s5fwc"]
 resource_local_to_scene = true
 script = ExtResource("2_30lmw")
 base_value = 2.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_wvvpj"]
+[sub_resource type="Resource" id="Resource_lxgu0"]
 resource_local_to_scene = true
 script = ExtResource("2_30lmw")
 base_value = 0.6
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_3ckip"]
+[sub_resource type="Resource" id="Resource_ycql1"]
 resource_local_to_scene = true
 script = ExtResource("2_30lmw")
 base_value = 5.0
 metadata/_custom_type_script = "uid://lsttcm8jal4o"
 
-[sub_resource type="Resource" id="Resource_r3iai"]
+[sub_resource type="Resource" id="Resource_3m7ra"]
 resource_local_to_scene = true
 script = ExtResource("3_wvvpj")
 metadata/_custom_type_script = "uid://8h5nnxqt3j1a"
 
 [node name="StationBeerSalesStand" unique_id=1090745131 instance=ExtResource("1_6pdj3")]
 sells_what = 3
+required_modifiers = 2
 label_name = &"Beer Stand"
-items_per_interaction = SubResource("Resource_6pdj3")
-items_per_interaction_helper = SubResource("Resource_30lmw")
-seconds_per_item = SubResource("Resource_wvvpj")
-money_per_item = SubResource("Resource_3ckip")
+items_per_interaction = SubResource("Resource_uqq44")
+items_per_interaction_helper = SubResource("Resource_s5fwc")
+seconds_per_item = SubResource("Resource_lxgu0")
+money_per_item = SubResource("Resource_ycql1")
 station_type = 7
 
 [node name="InteractionPrompt" parent="." index="1" unique_id=1811079141]
-interact_behavior = SubResource("Resource_r3iai")
+interact_behavior = SubResource("Resource_3m7ra")
 
 [node name="Label" parent="." index="2" unique_id=689880663]
 text = "Beer Stand"

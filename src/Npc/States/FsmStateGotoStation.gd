@@ -1,7 +1,7 @@
 class_name FsmStateGotoStation
 extends AbstractFsmState
 
-static var max_station_distance: float = 200
+static var max_station_distance: float = 300
 
 @export var _state_name: StringName = &"goto_station"
 @export var owner_node: Npc

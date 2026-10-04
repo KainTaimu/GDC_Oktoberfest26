@@ -5,6 +5,7 @@ extends AbstractStation
 signal on_sale_complete(earned_money: int)
 
 @export var sells_what: Ingredient.Types
+@export var required_modifiers: AbstractIngredientModifier.Type
 @export var label_name: StringName:
 	get:
 		return label_name
@@ -40,6 +41,10 @@ func interact() -> void:
 	if ingredient.ingredient_type != sells_what:
 		CustomLogger.log_debug("cant sell: held item not supported")
 		return
+	if required_modifiers != AbstractIngredientModifier.Type.NONE and not ingredient.has_modifier(required_modifiers):
+		CustomLogger.log_debug("cant sell: held item not have required modifier")
+		return
+
 	held.try_set_held_ingredient(null)
 	restock()
 
